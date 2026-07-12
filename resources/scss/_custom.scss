@@ -1,0 +1,256 @@
+// GAFTIM Custom Styles for ISCME 2027
+
+// ── Keyframe Animations ───────────────────────────────────────────────────────
+@keyframes floatCard {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-12px); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 113, 198, 0.3); }
+  50%       { box-shadow: 0 0 0 16px rgba(0, 113, 198, 0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+// ── Premium Button Style ──────────────────────────────────────────────────────
+.btn-premium {
+  background: linear-gradient(135deg, #0071C6, #003D6C);
+  background-size: 200% auto;
+  color: #fff !important;
+  border: none;
+  transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  &:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 61, 108, 0.35);
+    color: #fff !important;
+  }
+  &:active { transform: translateY(0); }
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #333333;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #163F6B;
+  letter-spacing: -0.02em;
+}
+
+.text-white,
+.text-white h1, .text-white h2, .text-white h3, 
+.text-white h4, .text-white h5, .text-white h6,
+h1.text-white, h2.text-white, h3.text-white, 
+h4.text-white, h5.text-white, h6.text-white {
+  color: #FFFFFF !important;
+}
+
+/* Navbar */
+.navbar {
+  transition: all 0.4s ease;
+  padding: 1.5rem 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(22, 63, 107, 0.1);
+}
+.navbar.scrolled {
+  padding: 0.8rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+.navbar-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: -1px;
+  color: #163F6B !important;
+}
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #163F6B !important;
+  margin: 0 12px;
+  transition: all 0.3s ease;
+}
+.nav-link:hover, .nav-link.active {
+  color: #000000 !important;
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn-premium {
+  background-color: #163F6B;
+  border: 2px solid #163F6B;
+  border-radius: 50px;
+  padding: 12px 32px;
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(22, 63, 107, 0.2);
+}
+.btn-premium:hover {
+  background-color: #FFFFFF;
+  color: #163F6B;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(22, 63, 107, 0.3);
+}
+
+/* Sections & Spacing */
+.section-padding {
+  padding: 100px 0;
+}
+.bg-light-blue {
+  background-color: #ECF6FF;
+}
+.bg-primary-dark {
+  background-color: #0f2742;
+  color: #FFFFFF;
+}
+.bg-primary-dark h1, .bg-primary-dark h2, .bg-primary-dark h3 {
+  color: #FFFFFF;
+}
+
+/* Floating Cards / Glassmorphism */
+.floating-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(22, 63, 107, 0.08);
+  border: 1px solid rgba(22, 63, 107, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.floating-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 30px 60px rgba(22, 63, 107, 0.15);
+  border-color: rgba(22, 63, 107, 0.2);
+}
+
+/* Speaker Grid */
+.speaker-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.speaker-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.speaker-card:hover img {
+  transform: scale(1.05);
+}
+.speaker-card .speaker-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(22,63,107,1) 0%, rgba(22,63,107,0) 100%);
+  padding: 40px 20px 20px;
+  color: #FFFFFF;
+}
+
+/* Typography Enhancements */
+.text-gradient {
+  background: linear-gradient(90deg, #163F6B 0%, #3a7bd5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Abstract Shape Background */
+.abstract-bg {
+  position: relative;
+  overflow: hidden;
+}
+.abstract-bg::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(236,246,255,1) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Premium Reveal Animations */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-fade-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-zoom-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-zoom-in.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Custom Parallax Styles */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0A2540 0%, #003D6C 100%);
+}
+.parallax-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130%; /* taller to allow movement */
+  object-fit: cover;
+  z-index: -2;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}

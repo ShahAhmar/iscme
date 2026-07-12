@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Tailwind v4 - scan React/JSX files */
+@source "../../resources/js/**/*.{jsx,js}";

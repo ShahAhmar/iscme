@@ -1,0 +1,23 @@
+// GAFTIM World-Class Conference Typography & Colors
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap');
+
+$primary: #003D6C; 
+$secondary: #EBF5FF; // Light blue for backgrounds/accents
+$white: #FFFFFF;
+$dark: #0A2540; // Deeper blue for dark sections
+
+// Typography
+$font-family-sans-serif: 'Inter', sans-serif;
+$headings-font-family: 'Space Grotesk', sans-serif;
+$headings-font-weight: 700;
+
+// Enable negative margins
+$enable-negative-margins: true;
+
+// Override Bootstrap colors
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "dark": $dark,
+  "light": $white,
+);
