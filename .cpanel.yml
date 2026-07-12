@@ -2,5 +2,5 @@
 deployment:
   tasks:
     # UPDATE '/home/username/public_html' with your actual cPanel home directory & path
-    - export DEPLOYPATH=/home/username/public_html
+    - export DEPLOYPATH=/home2/gaftimco/public_html
     - /bin/rsync -avz --exclude '.git' --exclude 'node_modules' --exclude '.env' --exclude 'tests' $CWD/ $DEPLOYPATH
