@@ -70,7 +70,7 @@ export default function Layout({ children }) {
                     : { background: '#E4F2FF', borderBottom: '1px solid rgba(0,61,108,0.1)' }
                 }
             >
-                <div className="max-w-[1440px] w-full mx-auto px-4 lg:px-6">
+                <div className="w-full px-4 lg:px-10 2xl:px-16">
                     <div className="flex items-center justify-between" style={{ height: '104px' }}>
 
                         {/* 5 Partner Logos */}
