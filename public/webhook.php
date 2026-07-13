@@ -34,8 +34,8 @@ if (($data['ref'] ?? '') !== 'refs/heads/' . GIT_BRANCH) {
     die(json_encode(['message' => 'Not main branch — skipped']));
 }
 
-// Run git pull
-$output  = shell_exec('git -C ' . escapeshellarg(REPO_PATH) . ' pull origin ' . GIT_BRANCH . ' 2>&1');
+// Run git pull (compatible with old git versions lacking -C)
+$output  = shell_exec('cd ' . escapeshellarg(REPO_PATH) . ' && git pull origin ' . GIT_BRANCH . ' 2>&1');
 
 // Log it
 $log = date('Y-m-d H:i:s') . " | DEPLOY\n" . $output . "\n---\n";
