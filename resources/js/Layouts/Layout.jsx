@@ -73,16 +73,18 @@ export default function Layout({ children }) {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex items-center justify-between" style={{ height: '104px' }}>
 
-                        {/* Logos + Conference Name */}
-                        <Link href="/" className="flex items-center gap-4 group flex-shrink-0">
-                            {/* Logos */}
-                            <div className="flex items-center gap-3">
-                                <img src="/logo1.png" alt="ISCME Logo" style={{ height: '90px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/tus-logo.jpeg" alt="Technical University of Sofia" style={{ height: '90px', width: 'auto', objectFit: 'contain' }} />
+                        {/* 5 Partner Logos */}
+                        <Link href="/" className="flex items-center gap-5 group flex-shrink-0" style={{ textDecoration: 'none' }}>
+                            <div className="flex items-center gap-4">
+                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '64px', width: 'auto', objectFit: 'contain' }} />
                             </div>
 
-                            {/* Conference Identity */}
-                            <div className="hidden md:flex flex-col" style={{ borderLeft: '1px solid rgba(0,61,108,0.18)', paddingLeft: '16px' }}>
+                            {/* Conference label */}
+                            <div className="hidden xl:flex flex-col" style={{ borderLeft: '1px solid rgba(0,61,108,0.18)', paddingLeft: '16px' }}>
                                 <span className="font-black leading-tight tracking-tight text-lg" style={{ color: '#003D6C' }}>ISCME <span style={{ color: '#1d6fa4' }}>'27</span></span>
                                 <span className="text-[10px] font-medium tracking-widest uppercase" style={{ color: '#5a8ab0' }}>Sofia, Bulgaria · June 2027</span>
                             </div>
