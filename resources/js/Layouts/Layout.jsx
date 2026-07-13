@@ -70,21 +70,21 @@ export default function Layout({ children }) {
                     : { background: '#E4F2FF', borderBottom: '1px solid rgba(0,61,108,0.1)' }
                 }
             >
-                <div className="max-w-7xl mx-auto px-6">
+                <div className="max-w-[1440px] w-full mx-auto px-4 lg:px-6">
                     <div className="flex items-center justify-between" style={{ height: '104px' }}>
 
                         {/* 5 Partner Logos */}
-                        <Link href="/" className="flex items-center gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
-                            <div className="flex items-center gap-2">
-                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '42px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '46px', width: 'auto', objectFit: 'contain' }} />
+                        <Link href="/" className="flex items-center gap-4 group flex-shrink-0" style={{ textDecoration: 'none' }}>
+                            <div className="flex items-center gap-3 lg:gap-4">
+                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '64px', width: 'auto', objectFit: 'contain' }} />
                             </div>
 
                             {/* Conference label */}
-                            <div className="hidden xl:flex flex-col" style={{ borderLeft: '1px solid rgba(0,61,108,0.18)', paddingLeft: '16px' }}>
+                            <div className="hidden 2xl:flex flex-col" style={{ borderLeft: '1px solid rgba(0,61,108,0.18)', paddingLeft: '16px' }}>
                                 <span className="font-black leading-tight tracking-tight text-lg" style={{ color: '#003D6C' }}>ISCME <span style={{ color: '#1d6fa4' }}>'27</span></span>
                                 <span className="text-[10px] font-medium tracking-widest uppercase" style={{ color: '#5a8ab0' }}>Sofia, Bulgaria · June 2027</span>
                             </div>
@@ -96,7 +96,7 @@ export default function Layout({ children }) {
                                 <Link
                                     key={link.path}
                                     href={link.path}
-                                    className="relative px-4 py-2 text-[12px] font-semibold tracking-wider uppercase transition-colors duration-200"
+                                    className="relative px-2 xl:px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-colors duration-200"
                                     style={{
                                         color: isActive(link.path) ? '#003D6C' : '#4a6e8a',
                                         fontWeight: isActive(link.path) ? '800' : '600',
