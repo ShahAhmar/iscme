@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - rsync -avz --exclude '.git' --exclude 'node_modules' --exclude '.env' --exclude 'tests' $CWD/ /home2/gaftimco/iscme.gaftim.com/
+    - /bin/rsync -avz --exclude '.git' --exclude 'node_modules' --exclude '.env' --exclude 'tests' $CWD/ /home2/gaftimco/iscme.gaftim.com/
