@@ -3,27 +3,8 @@ import { Head } from '@inertiajs/react';
 
 export default function Page({ page }) {
     useEffect(() => {
-        // 1. Parallax Video Scroll Effect
+        // 1. Parallax Video - DISABLED (video stays fixed as background)
         const parallaxVideo = document.querySelector('.parallax-video');
-        if (parallaxVideo) {
-            parallaxVideo.play().catch(e => console.warn("Video autoplay failed:", e));
-        }
-        let parallaxTicking = false;
-        
-        const handleScroll = () => {
-            if (!parallaxTicking && parallaxVideo) {
-                window.requestAnimationFrame(() => {
-                    const scrollY = window.pageYOffset;
-                    parallaxVideo.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
-                    parallaxTicking = false;
-                });
-                parallaxTicking = true;
-            }
-        };
-
-        if (parallaxVideo) {
-            window.addEventListener('scroll', handleScroll, { passive: true });
-        }
 
         // 2. Custom Scroll Reveal (IntersectionObserver)
         const revealEls = document.querySelectorAll(
@@ -116,7 +97,6 @@ export default function Page({ page }) {
 
         // Cleanup
         return () => {
-            window.removeEventListener('scroll', handleScroll);
             revealObserver.disconnect();
             counterObserver.disconnect();
             if (typeTimeoutId) clearTimeout(typeTimeoutId);
