@@ -5,6 +5,9 @@ export default function Page({ page }) {
     useEffect(() => {
         // 1. Parallax Video Scroll Effect
         const parallaxVideo = document.querySelector('.parallax-video');
+        if (parallaxVideo) {
+            parallaxVideo.play().catch(e => console.warn("Video autoplay failed:", e));
+        }
         let parallaxTicking = false;
         
         const handleScroll = () => {
