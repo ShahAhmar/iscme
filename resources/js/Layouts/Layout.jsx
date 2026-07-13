@@ -74,13 +74,13 @@ export default function Layout({ children }) {
                     <div className="flex items-center justify-between" style={{ height: '104px' }}>
 
                         {/* 5 Partner Logos */}
-                        <Link href="/" className="flex items-center gap-5 group flex-shrink-0" style={{ textDecoration: 'none' }}>
-                            <div className="flex items-center gap-4">
-                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '64px', width: 'auto', objectFit: 'contain' }} />
+                        <Link href="/" className="flex items-center gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
+                            <div className="flex items-center gap-2">
+                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '42px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '46px', width: 'auto', objectFit: 'contain' }} />
                             </div>
 
                             {/* Conference label */}
