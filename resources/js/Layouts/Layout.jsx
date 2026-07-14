@@ -70,23 +70,23 @@ export default function Layout({ children }) {
                     : { background: '#E4F2FF', borderBottom: '1px solid rgba(0,61,108,0.1)' }
                 }
             >
-                <div className="w-full px-4 lg:px-10 2xl:px-16">
-                    <div className="flex items-center justify-between" style={{ height: '104px' }}>
+                <div className="w-full px-4 lg:px-8 2xl:px-14">
+                    <div className="flex items-center justify-between" style={{ height: '88px' }}>
 
-                        {/* 5 Partner Logos */}
-                        <Link href="/" className="flex items-center gap-4 group flex-shrink-0" style={{ textDecoration: 'none' }}>
-                            <div className="flex items-center gap-3 lg:gap-4">
-                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '64px', width: 'auto', objectFit: 'contain' }} />
+                        {/* 5 Partner Logos + ISCME label */}
+                        <Link href="/" className="flex items-center gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
+                            <div className="flex items-center gap-2 lg:gap-3">
+                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '56px', width: 'auto', objectFit: 'contain' }} />
                             </div>
 
-                            {/* Conference label */}
-                            <div className="hidden 2xl:flex flex-col" style={{ borderLeft: '1px solid rgba(0,61,108,0.18)', paddingLeft: '16px' }}>
-                                <span className="font-black leading-tight tracking-tight text-lg" style={{ color: '#003D6C' }}>ISCME <span style={{ color: '#1d6fa4' }}>'27</span></span>
-                                <span className="text-[10px] font-medium tracking-widest uppercase" style={{ color: '#5a8ab0' }}>Sofia, Bulgaria · June 2027</span>
+                            {/* Conference label — visible from lg */}
+                            <div className="hidden lg:flex flex-col ml-1" style={{ borderLeft: '1.5px solid rgba(0,61,108,0.2)', paddingLeft: '14px' }}>
+                                <span className="font-black leading-tight tracking-tight" style={{ color: '#003D6C', fontSize: '1.1rem' }}>ISCME <span style={{ color: '#1565C0' }}>'27</span></span>
+                                <span style={{ color: '#7096b2', fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Sofia, Bulgaria · June 2027</span>
                             </div>
                         </Link>
 
@@ -115,17 +115,16 @@ export default function Layout({ children }) {
                         {/* Register CTA */}
                         <div className="hidden lg:flex items-center gap-3">
                             <Link
-
                                 href="/register"
-                                className="flex items-center gap-2 group px-5 py-2.5 rounded-lg text-xs font-bold tracking-widest uppercase text-white transition-all duration-200"
+                                className="flex items-center gap-2 group px-5 py-2.5 text-xs font-bold tracking-widest uppercase text-white transition-all duration-200"
                                 style={{
-                                    background: 'linear-gradient(135deg, #003D6C 0%, #0a4a8a 100%)',
-                                    border: '1px solid rgba(0,61,108,0.25)',
-                                    boxShadow: '0 4px 16px rgba(0,61,108,0.25)',
+                                    background: '#0D3A6E',
+                                    borderRadius: '6px',
+                                    letterSpacing: '0.08em',
                                     textDecoration: 'none',
                                 }}
                             >
-                                Register Now
+                                REGISTER NOW
                                 <ArrowRight size={13} className="transition-transform duration-200 group-hover:translate-x-1" />
                             </Link>
                         </div>
@@ -140,9 +139,6 @@ export default function Layout({ children }) {
                         </button>
                     </div>
                 </div>
-
-                {/* ── Decorative thin accent line ─ */}
-                <div className="h-[2px] w-full" style={{ background: 'linear-gradient(90deg, transparent 0%, #003D6C 30%, #1d6fa4 50%, #003D6C 70%, transparent 100%)', opacity: 0.4 }} />
             </header>
 
             {/* ── Mobile Drawer ──────────────────────────────── */}
