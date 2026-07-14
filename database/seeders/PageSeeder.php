@@ -42,25 +42,30 @@ class PageSeeder extends Seeder
                     </div>
                     <div class="col-lg-4 mt-5 mt-lg-0 text-lg-end" data-aos="fade-left" data-aos-delay="300">
                         <div class="hero-date-card d-inline-block p-4 rounded-4 w-100" style="position: relative; overflow: hidden; z-index: 1;">
-                            <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start">
+                            <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start date-item-submission">
                                 <small class="d-block mb-1" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:#5E7E9F; font-weight:700;">Submission Deadline</small>
                                 <span class="fw-bold" style="font-size:1.05rem; color:#0D3A6E;"><i class="bi bi-calendar-check me-2 text-warning"></i>April 20, 2027</span>
                             </div>
-                            <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start">
+                            <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start date-item-other">
                                 <small class="d-block mb-1" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:#5E7E9F; font-weight:700;">Acceptance Notification</small>
                                 <span class="fw-bold" style="font-size:1.05rem; color:#0D3A6E;"><i class="bi bi-envelope-check me-2 text-info"></i>May 10, 2027</span>
                             </div>
-                            <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start">
+                            <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start date-item-other">
                                 <small class="d-block mb-1" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:#5E7E9F; font-weight:700;">Early Bird Registration</small>
                                 <span class="fw-bold" style="font-size:1.05rem; color:#0D3A6E;"><i class="bi bi-tag me-2 text-success"></i>May 15, 2027</span>
                             </div>
-                            <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start">
+                            <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start date-item-other">
                                 <small class="d-block mb-1" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:#5E7E9F; font-weight:700;">Normal Registration</small>
                                 <span class="fw-bold" style="font-size:1.05rem; color:#0D3A6E;"><i class="bi bi-tag me-2 text-info"></i>May 20, 2027</span>
                             </div>
-                            <div class="text-start">
+                            <div class="text-start date-item-other">
                                 <small class="d-block mb-1" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:#5E7E9F; font-weight:700;">Conference Dates</small>
                                 <span class="fw-bold" style="font-size:1.05rem; color:#0D3A6E;"><i class="bi bi-flag me-2" style="color:#1A73E8;"></i>June 2–4, 2027</span>
+                            </div>
+                            <div class="text-center mt-2 border-top pt-2 d-lg-none view-dates-link-container" style="border-color: rgba(30,80,180,0.1) !important;">
+                                <a href="#important-dates" class="fw-bold text-decoration-none d-inline-flex align-items-center" style="font-size:0.75rem; color:#1A73E8;">
+                                    View Important Dates <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -122,7 +127,7 @@ class PageSeeder extends Seeder
         </section>
 
         <!-- ORGANIZERS BAR -->
-        <div class="bg-white border-bottom py-4" data-aos="fade-up">
+        <div class="bg-white border-bottom py-4 organizers-bar" data-aos="fade-up">
             <div class="container">
                 <div class="row align-items-center text-center g-4">
                     <div class="col-12"><p class="text-muted mb-2" style="font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; font-weight:600;">Organized By &amp; In Technical Collaboration With</p></div>
@@ -185,7 +190,7 @@ class PageSeeder extends Seeder
         </section>
 
         <!-- IMPORTANT DATES -->
-        <section class="py-5" style="background: linear-gradient(135deg, #071e3d 0%, #0d2a4f 50%, #071e3d 100%); position: relative; overflow: hidden;" data-aos="fade-up">
+        <section id="important-dates" class="py-5" style="background: linear-gradient(135deg, #071e3d 0%, #0d2a4f 50%, #071e3d 100%); position: relative; overflow: hidden;" data-aos="fade-up">
             <!-- Background decoration -->
             <div style="position:absolute; top:-100px; left:-100px; width:400px; height:400px; background:radial-gradient(circle, rgba(26,115,232,0.08) 0%, transparent 70%); border-radius:50%; pointer-events:none;"></div>
             <div style="position:absolute; bottom:-80px; right:-80px; width:350px; height:350px; background:radial-gradient(circle, rgba(91,184,255,0.06) 0%, transparent 70%); border-radius:50%; pointer-events:none;"></div>

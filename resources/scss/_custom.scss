@@ -289,10 +289,8 @@ h4.text-white, h5.text-white, h6.text-white {
 
 /* Hero Overlay Gradient & Responsive Layout Rules */
 .hero-overlay {
+  /* Desktop: left white → right transparent */
   background: linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.85) 45%, rgba(255,255,255,0.1) 85%);
-  @media (max-width: 991px) {
-    background: linear-gradient(to bottom, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 30%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.2) 100%) !important;
-  }
 }
 
 /* Glassmorphic Date Card Styling */
@@ -305,109 +303,330 @@ h4.text-white, h5.text-white, h6.text-white {
 }
 
 @media (max-width: 991px) {
+  /* MOBILE HERO COMPACT REDESIGN: Hero wrapper is auto-height to allow stats-bar to flow below */
   .parallax-container {
-    background: url('/mobile-hero-bg.png') no-repeat center top / cover !important;
-    padding-bottom: 0px !important;
+    background: #ffffff url('/mobile-hero-bg.png') no-repeat center top / 100% auto !important;
+    height: auto !important;
     min-height: auto !important;
-    text-align: center !important; /* CENTER alignment matching mockup */
+    max-height: none !important;
+    position: relative !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
   }
 
-  /* Center all hero text content on mobile */
+  /* MOBILE OVERLAY: transparent at top to keep globe fully visible, fade to white where text starts */
+  .hero-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100vh - 72px) !important;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 180px,
+      rgba(255, 255, 255, 0.95) 280px,
+      rgba(255, 255, 255, 1) 340px,
+      rgba(255, 255, 255, 1) 100%
+    ) !important;
+    z-index: 0;
+  }
+
+  /* Grid/flex alignment inside parallax container for the first screen viewport */
   .parallax-container .container {
-    text-align: center !important;
-  }
-  .parallax-container .col-lg-8 {
-    text-align: center !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .parallax-container .d-flex.flex-wrap {
-    justify-content: center !important;
-  }
-  .parallax-container .d-flex.gap-3 {
-    justify-content: center !important;
+    height: calc(100vh - 72px) !important;
+    min-height: calc(100vh - 72px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important; /* Bottom-align content within viewport */
+    padding: 0 20px 24px 20px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    z-index: 1;
   }
 
+  .parallax-container .row {
+    display: flex !important;
+    flex-direction: column-reverse !important; /* Date card top, text bottom */
+    justify-content: flex-end !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+
+  /* Centered date column with centered card */
+  .parallax-container .col-lg-4 {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Deadline Card: glassmorphism, compact vertical layout matching the mockup */
+  .hero-date-card {
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    box-shadow: 0 10px 24px rgba(0, 61, 108, 0.05) !important;
+    max-width: 300px !important;
+    width: 85% !important;
+    height: auto !important;
+    margin: 100px auto 24px auto !important; /* Overlaps lower part of globe */
+    padding: 16px 20px !important;
+    z-index: 2;
+    border-radius: 16px !important;
+  }
+
+  /* Inject Card Title "SUBMISSION DEADLINE" at the top of the card */
+  .hero-date-card::before {
+    content: "SUBMISSION DEADLINE";
+    display: block !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    color: #5E7E9F !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+
+  /* Hide labels inside the date card to keep only the dates visible on single lines */
+  .hero-date-card small {
+    display: none !important;
+  }
+
+  /* Hide the View Important Dates link container since all dates are visible */
+  .hero-date-card .view-dates-link-container {
+    display: none !important;
+  }
+
+  /* Date items row layouts */
+  .hero-date-card > div {
+    border-bottom: none !important;
+    padding: 0 !important;
+    margin: 0 0 10px 0 !important;
+    text-align: left !important;
+  }
+
+  .hero-date-card > div:last-of-type {
+    margin-bottom: 0 !important;
+  }
+
+  /* Date value styling: centered text, clean colors */
+  .hero-date-card span {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: #0D3A6E !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Uniform high-end blue icons for all dates */
+  .hero-date-card span i {
+    color: #1A73E8 !important;
+    font-size: 0.95rem !important;
+    margin-right: 10px !important;
+  }
+
+  /* Text column: left alignment & strict zero-up styling */
+  .parallax-container .col-lg-8 {
+    text-align: left !important;
+    align-items: flex-start !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Spacing between text elements */
+  .parallax-container .col-lg-8 > p.text-uppercase {
+    margin-top: 8px !important;
+    margin-bottom: 12px !important; /* Spacing before title */
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    text-align: left !important;
+  }
+
+  .parallax-container h1.display-3 {
+    margin-bottom: 12px !important; /* Spacing before description subtitle */
+    font-size: 2.3rem !important;
+    line-height: 1.15 !important;
+    font-weight: 800 !important;
+    text-align: left !important;
+  }
+
+  .parallax-container h2.fw-semibold {
+    margin-bottom: 12px !important; /* Spacing before paragraph */
+    font-size: 1.15rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+  }
+
+  .parallax-container .col-lg-8 > p.mb-4 {
+    margin-bottom: 16px !important; /* Spacing before badges */
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    color: #4b5563 !important;
+    text-align: left !important;
+  }
+
+  /* Badges: Left-aligned and wrapping */
+  .parallax-container .d-flex.flex-wrap {
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: 24px !important; /* Spacing before buttons */
+    width: 100% !important;
+  }
+
+  .parallax-container .d-flex.flex-wrap .badge {
+    font-size: 0.72rem !important;
+    padding: 6px 12px !important;
+  }
+
+  /* CTA Buttons: Side-by-side, equal width, no wrapping */
+  .parallax-container .d-flex.gap-3 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+
+  .parallax-container .d-flex.gap-3 a {
+    flex: 1 1 0% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 14px 10px !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    border-radius: 8px !important;
+  }
+
+  /* Premium Stats Bar Card below the first screen viewport */
   .stats-bar {
     position: relative !important;
     bottom: auto !important;
     left: auto !important;
-    background: #FFFFFF !important;
-    border: 1px solid rgba(30, 80, 180, 0.1) !important;
+    right: auto !important;
+    z-index: 2 !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(30, 80, 180, 0.08) !important;
     border-radius: 16px !important;
     box-shadow: 0 10px 30px rgba(30, 80, 180, 0.06) !important;
     padding: 24px 16px !important;
-    margin: 30px 0 20px 0 !important;
+    margin: 32px 16px 40px 16px !important; /* Space of 32px between CTA and Stats cards */
+    width: calc(100% - 32px) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .stats-bar .row {
+    margin: 0 !important;
     width: 100% !important;
   }
 
-  /* 2x2 Grid divider borders for stats bar */
+  /* Stats grid: 2x2 cards with compact sizes */
   .stats-bar .col-6 {
-    border-right: 1px solid rgba(30, 80, 180, 0.1) !important;
-    padding-bottom: 12px;
+    border-right: 1px solid rgba(30, 80, 180, 0.08) !important;
+    padding: 12px 16px !important;
     text-align: left !important;
+  }
+
+  .stats-bar .col-6:nth-child(even) {
+    border-right: none !important;
   }
 
   .stats-bar .col-6:nth-child(1),
   .stats-bar .col-6:nth-child(2) {
-    border-bottom: 1px solid rgba(30, 80, 180, 0.1) !important;
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-  }
-
-  .stats-bar .col-6:nth-child(2),
-  .stats-bar .col-6:nth-child(4) {
-    border-right: none !important;
+    border-bottom: 1px solid rgba(30, 80, 180, 0.08) !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 8px !important;
   }
 
   .stats-bar .col-6:nth-child(3),
   .stats-bar .col-6:nth-child(4) {
-    padding-bottom: 0 !important;
+    padding-top: 16px !important;
   }
 
-  .hero-date-card {
-    background: rgba(255, 255, 255, 0.72) !important;
-    backdrop-filter: blur(25px) !important;
-    -webkit-backdrop-filter: blur(25px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    box-shadow: 0 15px 35px rgba(22, 63, 107, 0.08) !important;
-    max-width: 440px;
-    margin: 10px auto 40px auto !important;
+  /* Decrease stats icon & text sizes for small viewports */
+  .stats-bar .col-6 .d-flex {
+    gap: 8px !important;
+  }
+
+  .stats-bar .col-6 .rounded-circle {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 4px !important;
+  }
+
+  .stats-bar .col-6 .rounded-circle i {
+    font-size: 1.0rem !important;
+  }
+
+  .stats-bar .col-6 small.text-uppercase {
+    font-size: 0.58rem !important;
+  }
+
+  .stats-bar .col-6 span.d-block {
+    font-size: 0.82rem !important;
+  }
+
+  .stats-bar .col-6 small:not(.text-uppercase) {
+    font-size: 0.6rem !important;
   }
 }
 
 @media (max-width: 767px) {
   .parallax-container {
-    margin: 8px 10px 16px 10px !important;
-    padding: 40px 16px !important;
+    padding-top: 0 !important;
+    margin: 0 !important;
   }
-  .parallax-container h1 {
-    font-size: 2.5rem !important;
-    line-height: 1.2 !important;
+
+  /* Responsive Organizers Bar */
+  .organizers-bar {
+    padding: 24px 16px !important;
   }
-  .parallax-container h2 {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
+  .organizers-bar .row {
+    gap: 16px !important;
   }
-  .parallax-container p {
-    font-size: 0.95rem !important;
-    line-height: 1.6 !important;
-  }
-  .parallax-container .d-flex.flex-wrap.gap-3 {
+  /* Align all three icon/text blocks to start from the same left boundary, centered horizontally on screen */
+  .organizers-bar .col-md-4 > div {
     display: flex !important;
-    flex-direction: row !important; /* Keep side-by-side as in mobile screenshot */
-    gap: 12px !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    max-width: 290px !important;
+    margin: 0 auto !important;
+    text-align: left !important;
   }
-  .parallax-container .d-flex.flex-wrap.gap-3 a,
-  .parallax-container .d-flex.flex-wrap.gap-3 button {
-    flex: 1 1 0% !important;
-    text-align: center !important;
-    justify-content: center !important;
-    padding: 12px 10px !important;
-    font-size: 0.85rem !important;
+  .organizers-bar .border-end {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(13, 58, 110, 0.08) !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 4px !important;
+  }
+  .organizers-bar .col-md-4:last-child {
+    padding-bottom: 8px !important;
+  }
+  .organizers-bar i.bi {
+    font-size: 1.7rem !important; /* Slightly smaller premium icons */
+  }
+  .organizers-bar strong {
+    font-size: 0.9rem !important;
+  }
+  .organizers-bar small {
+    font-size: 0.72rem !important;
   }
 }
+
+
+
 
 
 
