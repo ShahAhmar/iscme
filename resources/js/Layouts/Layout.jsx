@@ -36,22 +36,22 @@ export default function Layout({ children }) {
 
             {/* ── Topbar ─────────────────────────────────────── */}
             <div style={{ background: '#071e3d', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-                <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
-                    <div className="flex items-center gap-6 text-xs" style={{ color: '#94afc8' }}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex justify-between items-center">
+                    <div className="flex flex-wrap items-center justify-between w-full md:w-auto gap-2 sm:gap-6 text-[10.5px] sm:text-xs" style={{ color: '#94afc8' }}>
                         <span className="flex items-center gap-1.5">
                             <Calendar size={12} style={{ color: '#4a9de0' }} />
-                            June 2–4, 2027
+                            2–4 June, 2027
                         </span>
-                        <span className="hidden md:flex items-center gap-1.5">
+                        <span className="flex items-center gap-1.5">
                             <MapPin size={12} style={{ color: '#4a9de0' }} />
                             Sofia, Bulgaria
                         </span>
-                        <span className="hidden sm:flex items-center gap-1.5">
+                        <span className="flex items-center gap-1.5">
                             <Mail size={12} style={{ color: '#4a9de0' }} />
                             iscme@gaftim.com
                         </span>
                     </div>
-                    <div className="flex items-center gap-4 text-xs">
+                    <div className="hidden md:flex items-center gap-4 text-xs">
                         <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full"
                             style={{ background: 'rgba(16,185,129,0.12)', color: '#34d399', border: '1px solid rgba(16,185,129,0.2)' }}>
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
@@ -74,7 +74,7 @@ export default function Layout({ children }) {
                 }}
             >
                 <div 
-                    className="w-full mx-auto px-3 sm:px-4 lg:px-8 2xl:px-14"
+                    className="w-full mx-auto px-2 sm:px-4 lg:px-8 2xl:px-14"
                     style={{
                         background: '#FFFFFF',
                         borderRadius: '20px',
@@ -85,14 +85,14 @@ export default function Layout({ children }) {
                 >
                     <div className="flex items-center justify-between" style={{ height: '88px' }}>
 
-                        {/* 5 Partner Logos + ISCME label */}
+                        {/* 5 Partner Logos */}
                         <Link href="/" className="flex items-center gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
-                            <div className="flex items-center gap-1.5 sm:gap-2.5 lg:gap-3">
-                                <img src="/logo-iscme.png"  alt="ISCME"  className="h-7 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-7 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-tus.png"    alt="TU Sofia" className="hidden sm:inline-block h-7 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-ieee.webp"  alt="IEEE"   className="hidden md:inline-block h-8 sm:h-10 lg:h-[52px] w-auto object-contain" />
-                                <img src="/logo-usm.png"    alt="USM"    className="hidden md:inline-block h-6 sm:h-8 lg:h-11 w-auto object-contain" />
+                            <div className="flex items-center gap-1 sm:gap-2.5 lg:gap-3">
+                                <img src="/logo-iscme.png"  alt="ISCME"  className="h-6.5 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-6.5 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-tus.png"    alt="TU Sofia" className="h-6.5 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-ieee.webp"  alt="IEEE"   className="h-7.5 sm:h-10 lg:h-[52px] w-auto object-contain" />
+                                <img src="/logo-usm.png"    alt="USM"    className="h-6 sm:h-8 lg:h-11 w-auto object-contain" />
                             </div>
 
                             {/* Conference label — visible from lg */}
@@ -139,11 +139,11 @@ export default function Layout({ children }) {
                             </Link>
                         </div>
 
-                        {/* Mobile Toggle */}
+                        {/* Mobile Toggle - Solid blue with white icon */}
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="lg:hidden p-2 rounded-lg transition-colors"
-                            style={{ color: '#0D3A6E', background: 'rgba(0,61,108,0.06)' }}
+                            className="lg:hidden p-2.5 rounded-lg transition-all"
+                            style={{ color: '#FFFFFF', background: '#007BFF', boxShadow: '0 4px 12px rgba(0, 123, 255, 0.25)' }}
                         >
                             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                         </button>

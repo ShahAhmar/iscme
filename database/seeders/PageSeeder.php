@@ -16,7 +16,7 @@ class PageSeeder extends Seeder
         <section class="parallax-container d-flex align-items-center" style="min-height: 95vh; background: url(\'/hero-bg.png\') no-repeat center center / cover; position: relative; padding-bottom: 120px;">
             <div class="position-absolute w-100 h-100 hero-overlay" style="top:0; left:0; z-index:0;"></div>
             <div class="container position-relative z-1 py-5">
-                <div class="row align-items-center">
+                <div class="row align-items-center flex-column-reverse flex-lg-row">
                     <div class="col-lg-8">
                         <p class="text-uppercase fw-bold mb-2" style="letter-spacing:3px; font-size:0.8rem; color:#0D3A6E;" data-aos="fade-down">
                             <i class="bi bi-geo-alt-fill me-2" style="color: #1A73E8;"></i>Technical University of Sofia, Bulgaria &nbsp;|&nbsp; 2–4 June, 2027
@@ -67,11 +67,11 @@ class PageSeeder extends Seeder
                 </div>
             </div>
             <!-- STATS BAR -->
-            <div class="stats-bar w-100 py-4 px-5" style="background: rgba(255,255,255,0.25); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1.5px solid rgba(255,255,255,0.55); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 -4px 24px rgba(30,80,180,0.08); position: absolute; bottom: 0; left: 0; z-index: 2;">
+            <div class="stats-bar w-100 py-4 px-3 px-sm-5" style="background: rgba(255,255,255,0.25); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1.5px solid rgba(255,255,255,0.55); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 -4px 24px rgba(30,80,180,0.08); position: absolute; bottom: 0; left: 0; z-index: 2;">
                 <div class="row align-items-center text-center text-md-start">
-                    <div class="col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
+                    <div class="col-6 col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
                         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2);">
+                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2); flex-shrink: 0;">
                                 <i class="bi bi-calendar3" style="font-size: 1.3rem; color: #1A73E8;"></i>
                             </div>
                             <div>
@@ -81,39 +81,39 @@ class PageSeeder extends Seeder
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
+                    <div class="col-6 col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
                         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2);">
+                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2); flex-shrink: 0;">
                                 <i class="bi bi-geo-alt" style="font-size: 1.3rem; color: #1A73E8;"></i>
                             </div>
                             <div>
                                 <small class="text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; color: #5E7E9F;">Venue</small>
                                 <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2; color: #0D3A6E;">Sofia, Bulgaria</span>
-                                <small style="font-size: 0.7rem; color: #7096b2;">Technical University of Sofia</small>
+                                <small style="font-size: 0.7rem; color: #7096b2;">TU Sofia</small>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
+                    <div class="col-6 col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
                         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2);">
+                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2); flex-shrink: 0;">
                                 <i class="bi bi-people" style="font-size: 1.3rem; color: #1A73E8;"></i>
                             </div>
                             <div>
                                 <small class="text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; color: #5E7E9F;">Participants</small>
                                 <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2; color: #0D3A6E;">1000+</span>
-                                <small style="font-size: 0.7rem; color: #7096b2;">Researchers &amp; Academicians</small>
+                                <small style="font-size: 0.7rem; color: #7096b2;">Researchers</small>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 py-2">
+                    <div class="col-6 col-md-3 py-2">
                         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2);">
+                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2); flex-shrink: 0;">
                                 <i class="bi bi-award" style="font-size: 1.3rem; color: #1A73E8;"></i>
                             </div>
                             <div>
                                 <small class="text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; color: #5E7E9F;">Tracks</small>
                                 <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2; color: #0D3A6E;">15+</span>
-                                <small style="font-size: 0.7rem; color: #7096b2;">Topics &amp; Special Sessions</small>
+                                <small style="font-size: 0.7rem; color: #7096b2;">Special Sessions</small>
                             </div>
                         </div>
                     </div>
