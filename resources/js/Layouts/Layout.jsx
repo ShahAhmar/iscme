@@ -67,7 +67,11 @@ export default function Layout({ children }) {
 
             {/* ── Main Header (Floating rounded card) ────────────────────────────────── */}
             <header
-                className={`z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0 pt-2 px-6' : 'relative py-3 px-6'}`}
+                className={`z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0 pt-2 px-6' : 'relative px-6'}`}
+                style={{
+                    marginTop: scrolled ? '0' : '16px',
+                    marginBottom: scrolled ? '0' : '8px',
+                }}
             >
                 <div 
                     className="w-full mx-auto px-4 lg:px-8 2xl:px-14"
