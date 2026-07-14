@@ -243,5 +243,12 @@ h4.text-white, h5.text-white, h6.text-white {
   overflow: hidden;
   border-radius: 20px;
   margin: 12px 24px 24px 24px;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(163, 191, 255, 0.25),
+    0 8px 32px rgba(30, 80, 180, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(163, 191, 255, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
