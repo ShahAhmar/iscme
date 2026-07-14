@@ -242,7 +242,7 @@ h4.text-white, h5.text-white, h6.text-white {
   position: relative;
   overflow: hidden;
   border-radius: 20px;
-  margin: 12px 24px 24px 24px;
+  margin: 12px 14px 20px 14px;
   border: 1.5px solid rgba(255, 255, 255, 0.55);
   box-shadow:
     0 0 0 1px rgba(163, 191, 255, 0.25),
@@ -251,4 +251,39 @@ h4.text-white, h5.text-white, h6.text-white {
     inset 0 -1px 0 rgba(163, 191, 255, 0.2);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+
+  @media (min-width: 768px) {
+    margin: 12px 24px 24px 24px;
+  }
 }
+
+/* Stats Bar Mobile Responsiveness */
+@media (max-width: 991px) {
+  .parallax-container {
+    padding-bottom: 0px !important;
+    min-height: auto !important;
+  }
+  
+  .stats-bar {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-top: 1.5px solid rgba(22, 63, 107, 0.1) !important;
+    padding: 24px 16px !important;
+  }
+  
+  .stats-bar .border-end {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(30, 80, 180, 0.1) !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .stats-bar .row > div:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+

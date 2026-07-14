@@ -46,7 +46,7 @@ export default function Layout({ children }) {
                             <MapPin size={12} style={{ color: '#4a9de0' }} />
                             Sofia, Bulgaria
                         </span>
-                        <span className="flex items-center gap-1.5">
+                        <span className="hidden sm:flex items-center gap-1.5">
                             <Mail size={12} style={{ color: '#4a9de0' }} />
                             iscme@gaftim.com
                         </span>
@@ -87,12 +87,12 @@ export default function Layout({ children }) {
 
                         {/* 5 Partner Logos + ISCME label */}
                         <Link href="/" className="flex items-center gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
-                            <div className="flex items-center gap-2 lg:gap-3">
-                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '44px', width: 'auto', objectFit: 'contain' }} />
+                            <div className="flex items-center gap-1.5 sm:gap-2.5 lg:gap-3">
+                                <img src="/logo-iscme.png"  alt="ISCME"  className="h-6 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-6 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-tus.png"    alt="TU Sofia" className="h-6 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-ieee.webp"  alt="IEEE"   className="h-7 sm:h-10 lg:h-[52px] w-auto object-contain" />
+                                <img src="/logo-usm.png"    alt="USM"    className="h-5.5 sm:h-8 lg:h-11 w-auto object-contain" />
                             </div>
 
                             {/* Conference label — visible from lg */}
