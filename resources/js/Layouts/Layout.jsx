@@ -257,12 +257,12 @@ export default function Layout({ children }) {
 
                     {/* Col 1 — Logo + About + Social */}
                     <div>
-                        <div className="flex items-center gap-3 p-3 rounded-lg mb-6" style={{ background: '#FFFFFF', display: 'inline-flex', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-                            <img src="/logo-iscme.png" alt="ISCME" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
-                            <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
-                            <img src="/logo-tus.png" alt="TUS" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
-                            <img src="/logo-ieee.webp" alt="IEEE" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
-                            <img src="/logo-usm.png" alt="USM" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
+                        <div className="flex flex-wrap items-center gap-2 p-2.5 rounded-lg mb-6 w-full" style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                            <img src="/logo-iscme.png" alt="ISCME" style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
+                            <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
+                            <img src="/logo-tus.png" alt="TUS" style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
+                            <img src="/logo-ieee.webp" alt="IEEE" style={{ height: '26px', width: 'auto', objectFit: 'contain' }} />
+                            <img src="/logo-usm.png" alt="USM" style={{ height: '22px', width: 'auto', objectFit: 'contain' }} />
                         </div>
                         <p className="text-sm leading-relaxed mb-5" style={{ color: '#7296b5' }}>
                             An international scientific conference on management &amp; engineering, co-organized by TU Sofia, GAFTIM, and USM — technically co-sponsored by IEEE.
