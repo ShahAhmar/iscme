@@ -1,4 +1,9 @@
----
+﻿---
 deployment:
   tasks:
-    - /bin/rsync -avz --exclude '.git' --exclude 'node_modules' --exclude '.env' --exclude 'tests' $CWD/ /home2/gaftimco/iscme.gaftim.com/
+    - export DEPLOYPATH=/home2/gaftimco/iscme.gaftim.com
+    - /bin/cp -rf $PWD/public/build $DEPLOYPATH/public/build
+    - /bin/cp -rf $PWD/routes $DEPLOYPATH/routes
+    - /bin/cp -rf $PWD/app $DEPLOYPATH/app
+    - /bin/cp -f $PWD/public/webhook.php $DEPLOYPATH/public/webhook.php
+    - cd $DEPLOYPATH && php artisan optimize:clear 2>/dev/null || true
