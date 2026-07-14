@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Mail, Calendar, MapPin, Award, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight, Mail, Calendar, MapPin, Award, ChevronDown, Linkedin, Twitter, Facebook, Youtube } from 'lucide-react';
 
 export default function Layout({ children }) {
     const { url } = usePage();
@@ -209,68 +209,142 @@ export default function Layout({ children }) {
                 </AnimatePresence>
             </main>
 
+            {/* ── CTA Banner ──────────────────────────────────── */}
+            <section style={{
+                background: 'linear-gradient(135deg, #1a3a8f 0%, #1A73E8 50%, #0ea5e9 100%)',
+                margin: '0 24px 0 24px',
+                borderRadius: '20px',
+                position: 'relative',
+                overflow: 'hidden',
+            }}>
+                {/* Decorative wave */}
+                <div style={{ position:'absolute', right:0, top:0, bottom:0, width:'40%', opacity:0.15, backgroundImage:'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath fill=\'%23FFFFFF\' d=\'M44.6,-62.3C56.9,-52.3,64.8,-37.1,68.4,-21.3C72,-5.5,71.3,10.9,65.1,25.1C58.9,39.3,47.1,51.3,33.3,58.7C19.5,66.1,3.6,68.9,-12.3,66.6C-28.3,64.3,-44.3,56.9,-55.5,45C-66.7,33.1,-73.1,16.5,-72.3,0.5C-71.5,-15.6,-63.5,-31.2,-52.4,-41.8C-41.2,-52.5,-27,-58.2,-12.2,-62.4C2.6,-66.6,32.3,-72.2,44.6,-62.3Z\' transform=\'translate(100 100)\'/%3E%3C/svg%3E")' }}></div>
+                <div className="max-w-4xl mx-auto px-6 py-16 text-center" style={{ position:'relative', zIndex:1 }}>
+                    <h2 className="fw-bold text-white mb-3" style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:'2rem' }}>Ready to Present Your Research?</h2>
+                    <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'12px', margin:'0 0 20px' }}>
+                        <div style={{ height:'1px', width:'60px', background:'rgba(255,255,255,0.4)' }}></div>
+                        <div style={{ width:'8px', height:'8px', borderRadius:'50%', background:'rgba(255,255,255,0.7)', border:'2px solid white' }}></div>
+                        <div style={{ height:'1px', width:'60px', background:'rgba(255,255,255,0.4)' }}></div>
+                    </div>
+                    <p className="text-white mb-8" style={{ opacity:0.85, maxWidth:'550px', margin:'0 auto 32px', lineHeight:1.7 }}>
+                        Submit your paper for ISCME'27 and join researchers from across the globe in Sofia, Bulgaria — June 2–4, 2027. Paper submissions via Microsoft CMT.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Link href="/register" style={{
+                            background:'white', color:'#1A73E8', fontWeight:700,
+                            padding:'14px 28px', borderRadius:'10px',
+                            display:'inline-flex', alignItems:'center', gap:'10px',
+                            textDecoration:'none', fontSize:'0.95rem', transition:'all 0.2s'
+                        }}>
+                            Register Now <ArrowRight size={16} /> <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:'28px', height:'28px', borderRadius:'50%', background:'#1A73E8', color:'white' }}><ArrowRight size={13} /></span>
+                        </Link>
+                        <a href="mailto:iscme@gaftim.com" style={{
+                            background:'transparent', color:'white', fontWeight:600,
+                            padding:'14px 28px', borderRadius:'10px',
+                            display:'inline-flex', alignItems:'center', gap:'10px',
+                            textDecoration:'none', fontSize:'0.95rem',
+                            border:'1.5px solid rgba(255,255,255,0.6)', transition:'all 0.2s'
+                        }}>
+                            <Mail size={16} /> iscme@gaftim.com
+                        </a>
+                    </div>
+                </div>
+            </section>
+
             {/* ── Footer ─────────────────────────────────────── */}
-            <footer style={{ background: '#071e3d', borderTop: '1px solid rgba(74,157,224,0.12)' }}>
-                <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <footer style={{ background: '#0d1f38', borderTop: '1px solid rgba(74,157,224,0.08)', margin: '0 24px', borderRadius: '0 0 20px 20px' }}>
+                <div className="max-w-7xl mx-auto px-8 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+                    {/* Col 1 — Logo + About + Social */}
                     <div>
-                        <div className="flex items-center gap-3 mb-5">
-                            <img src="/logo1.png" alt="ISCME Logo" className="h-10 w-auto object-contain" />
-                            <img src="/tus-logo.jpeg" alt="Technical University of Sofia" className="h-10 w-auto object-contain" />
+                        <div className="flex items-center gap-2 mb-4 p-3 rounded-xl" style={{ background:'rgba(255,255,255,0.06)', display:'inline-flex' }}>
+                            <img src="/logo1.png" alt="ISCME" className="h-8 w-auto object-contain" />
+                            <img src="/tus-logo.jpeg" alt="TUS" className="h-8 w-auto object-contain" />
+                            <img src="/gaftim-logo.png" alt="GAFTIM" className="h-8 w-auto object-contain" onError={(e)=>e.target.style.display='none'} />
+                            <img src="/ieee-logo.png" alt="IEEE" className="h-8 w-auto object-contain" onError={(e)=>e.target.style.display='none'} />
+                            <img src="/usm-logo.png" alt="USM" className="h-8 w-auto object-contain" onError={(e)=>e.target.style.display='none'} />
                         </div>
-                        <p className="text-sm leading-relaxed" style={{ color: '#7296b5' }}>
+                        <p className="text-sm leading-relaxed mt-4 mb-5" style={{ color: '#7296b5' }}>
                             An international scientific conference on management &amp; engineering, co-organized by TU Sofia, GAFTIM, and USM — technically co-sponsored by IEEE.
                         </p>
+                        <div className="flex gap-3">
+                            {[{icon: <Linkedin size={15}/>, href:'#'}, {icon:<Twitter size={15}/>, href:'#'}, {icon:<Facebook size={15}/>, href:'#'}, {icon:<Youtube size={15}/>, href:'#'}].map((s, i) => (
+                                <a key={i} href={s.href} style={{
+                                    width:'36px', height:'36px', borderRadius:'50%',
+                                    background:'rgba(255,255,255,0.07)',
+                                    border:'1px solid rgba(255,255,255,0.12)',
+                                    display:'flex', alignItems:'center', justifyContent:'center',
+                                    color:'#7296b5', textDecoration:'none', transition:'all 0.2s'
+                                }}>{s.icon}</a>
+                            ))}
+                        </div>
                     </div>
 
+                    {/* Col 2 — Navigation */}
                     <div>
-                        <h4 className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#4a9de0' }}>Navigation</h4>
-                        <div className="grid grid-cols-2 gap-y-2.5 gap-x-4">
+                        <h4 className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: '#4a9de0' }}>Navigation</h4>
+                        <div style={{ width:'32px', height:'2px', background:'linear-gradient(90deg,#1A73E8,#5BB8FF)', borderRadius:'2px', marginBottom:'18px' }}></div>
+                        <div className="grid grid-cols-2 gap-y-3 gap-x-4">
                             {navLinks.map((link) => (
                                 <Link key={link.path} href={link.path}
-                                    className="text-sm transition-colors hover:text-white"
-                                    style={{ color: '#7296b5' }}>
+                                    className="text-sm transition-colors flex items-center gap-1.5"
+                                    style={{ color: '#7296b5', textDecoration:'none' }}>
+                                    <ChevronDown size={12} style={{ transform:'rotate(-90deg)', color:'#4a9de0', flexShrink:0 }} />
                                     {link.name}
                                 </Link>
                             ))}
                         </div>
                     </div>
 
+                    {/* Col 3 — Venue & Dates */}
                     <div>
-                        <h4 className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#4a9de0' }}>Venue &amp; Dates</h4>
-                        <div className="flex flex-col gap-3 text-sm" style={{ color: '#7296b5' }}>
-                            <span className="flex items-start gap-2.5">
-                                <Calendar size={14} style={{ color: '#4a9de0', marginTop: '2px', flexShrink: 0 }} />
-                                June 2–4, 2027
+                        <h4 className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: '#4a9de0' }}>Venue &amp; Dates</h4>
+                        <div style={{ width:'32px', height:'2px', background:'linear-gradient(90deg,#1A73E8,#5BB8FF)', borderRadius:'2px', marginBottom:'18px' }}></div>
+                        <div className="flex flex-col gap-4 text-sm" style={{ color: '#7296b5' }}>
+                            <span className="flex items-start gap-3">
+                                <span style={{ width:'34px', height:'34px', borderRadius:'50%', background:'rgba(26,115,232,0.15)', border:'1px solid rgba(26,115,232,0.25)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                                    <Calendar size={15} style={{ color: '#4a9de0' }} />
+                                </span>
+                                <span style={{ paddingTop:'6px' }}>June 2–4, 2027</span>
                             </span>
-                            <span className="flex items-start gap-2.5">
-                                <MapPin size={14} style={{ color: '#4a9de0', marginTop: '2px', flexShrink: 0 }} />
-                                Technical University of Sofia,<br />Studentski grad, Sofia, Bulgaria
+                            <span className="flex items-start gap-3">
+                                <span style={{ width:'34px', height:'34px', borderRadius:'50%', background:'rgba(26,115,232,0.15)', border:'1px solid rgba(26,115,232,0.25)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                                    <MapPin size={15} style={{ color: '#4a9de0' }} />
+                                </span>
+                                <span style={{ paddingTop:'4px' }}>Technical University of Sofia,<br />Studentski grad, Sofia, Bulgaria</span>
                             </span>
                         </div>
                     </div>
 
+                    {/* Col 4 — Contact */}
                     <div>
-                        <h4 className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#4a9de0' }}>Contact</h4>
+                        <h4 className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: '#4a9de0' }}>Contact</h4>
+                        <div style={{ width:'32px', height:'2px', background:'linear-gradient(90deg,#1A73E8,#5BB8FF)', borderRadius:'2px', marginBottom:'18px' }}></div>
                         <div className="flex flex-col gap-3 text-sm" style={{ color: '#7296b5' }}>
-                            <span className="flex items-center gap-2.5">
-                                <Mail size={14} style={{ color: '#4a9de0', flexShrink: 0 }} />
+                            <span className="flex items-center gap-3">
+                                <span style={{ width:'34px', height:'34px', borderRadius:'50%', background:'rgba(26,115,232,0.15)', border:'1px solid rgba(26,115,232,0.25)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                                    <Mail size={15} style={{ color: '#4a9de0' }} />
+                                </span>
                                 iscme@gaftim.com
                             </span>
-                            <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(74,157,224,0.1)' }}>
+                            <div className="mt-3 pt-4" style={{ borderTop: '1px solid rgba(74,157,224,0.1)' }}>
                                 <p className="text-xs mb-1" style={{ color: '#4a6a8a' }}>Technical Sponsor</p>
-                                <p className="text-sm font-semibold text-white">IEEE Bulgaria Section</p>
+                                <p className="text-sm font-bold text-white">IEEE Bulgaria Section</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                {/* Bottom bar */}
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center gap-3 text-xs" style={{ color: '#4a6a8a' }}>
-                        <p>&copy; {new Date().getFullYear()} ISCME '27 · International Scientific Conference on Management &amp; Engineering. All rights reserved.</p>
-                        <div className="flex gap-5">
-                            <a href="#" className="transition-colors hover:text-slate-300">Privacy</a>
-                            <a href="#" className="transition-colors hover:text-slate-300">Terms</a>
-                            <a href="#" className="transition-colors hover:text-slate-300">Cookies</a>
+                    <div className="max-w-7xl mx-auto px-8 py-5 flex flex-col md:flex-row justify-between items-center gap-3 text-xs" style={{ color: '#4a6a8a' }}>
+                        <p>&copy; {new Date().getFullYear()} ISCME '27 - International Scientific Conference on Management &amp; Engineering. All rights reserved.</p>
+                        <div className="flex items-center gap-3">
+                            <a href="#" style={{ color:'#4a6a8a', textDecoration:'none' }}>Privacy</a>
+                            <span style={{ color:'rgba(74,106,138,0.4)' }}>|</span>
+                            <a href="#" style={{ color:'#4a6a8a', textDecoration:'none' }}>Terms</a>
+                            <span style={{ color:'rgba(74,106,138,0.4)' }}>|</span>
+                            <a href="#" style={{ color:'#4a6a8a', textDecoration:'none' }}>Cookie Policy</a>
                         </div>
                     </div>
                 </div>
