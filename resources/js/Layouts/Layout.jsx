@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Mail, Calendar, MapPin, Award, ChevronDown, Linkedin, Twitter, Facebook, Youtube } from 'lucide-react';
+import { Menu, X, ArrowRight, Mail, Calendar, MapPin, Award, ChevronDown } from 'lucide-react';
 
 export default function Layout({ children }) {
     const { url } = usePage();
@@ -268,14 +268,19 @@ export default function Layout({ children }) {
                             An international scientific conference on management &amp; engineering, co-organized by TU Sofia, GAFTIM, and USM — technically co-sponsored by IEEE.
                         </p>
                         <div className="flex gap-3">
-                            {[{icon: <Linkedin size={15}/>, href:'#'}, {icon:<Twitter size={15}/>, href:'#'}, {icon:<Facebook size={15}/>, href:'#'}, {icon:<Youtube size={15}/>, href:'#'}].map((s, i) => (
+                            {[
+                                { href:'#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> },
+                                { href:'#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg> },
+                                { href:'#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> },
+                                { href:'#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg> },
+                            ].map((s, i) => (
                                 <a key={i} href={s.href} style={{
                                     width:'36px', height:'36px', borderRadius:'50%',
                                     background:'rgba(255,255,255,0.07)',
                                     border:'1px solid rgba(255,255,255,0.12)',
                                     display:'flex', alignItems:'center', justifyContent:'center',
                                     color:'#7296b5', textDecoration:'none', transition:'all 0.2s'
-                                }}>{s.icon}</a>
+                                }}>{s.svg}</a>
                             ))}
                         </div>
                     </div>
