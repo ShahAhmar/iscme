@@ -14,7 +14,7 @@ class PageSeeder extends Seeder
         $homeHtml = '
         <!-- HERO SECTION -->
         <section class="parallax-container d-flex align-items-center" style="min-height: 95vh; background: url(\'/hero-bg.png\') no-repeat center center / cover; position: relative; padding-bottom: 120px;">
-            <div class="position-absolute w-100 h-100" style="background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0) 70%); top:0; left:0; z-index:0;"></div>
+            <div class="position-absolute w-100 h-100 hero-overlay" style="top:0; left:0; z-index:0;"></div>
             <div class="container position-relative z-1 py-5">
                 <div class="row align-items-center">
                     <div class="col-lg-8">
@@ -41,7 +41,7 @@ class PageSeeder extends Seeder
                         </div>
                     </div>
                     <div class="col-lg-4 mt-5 mt-lg-0 text-lg-end" data-aos="fade-left" data-aos-delay="300">
-                        <div class="d-inline-block p-4 rounded-4 w-100" style="background: rgba(255,255,255,0.45); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.65); box-shadow: 0 10px 30px rgba(0,61,108,0.08); position: relative; overflow: hidden; z-index: 1;">
+                        <div class="hero-date-card d-inline-block p-4 rounded-4 w-100" style="position: relative; overflow: hidden; z-index: 1;">
                             <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10 text-start">
                                 <small class="d-block mb-1" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:#5E7E9F; font-weight:700;">Submission Deadline</small>
                                 <span class="fw-bold" style="font-size:1.05rem; color:#0D3A6E;"><i class="bi bi-calendar-check me-2 text-warning"></i>April 20, 2027</span>

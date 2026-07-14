@@ -67,14 +67,14 @@ export default function Layout({ children }) {
 
             {/* ── Main Header (Floating rounded card) ────────────────────────────────── */}
             <header
-                className={`z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0 pt-2 px-6' : 'relative px-6'}`}
+                className={`z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0 pt-2 px-3 sm:px-6' : 'relative px-3 sm:px-6'}`}
                 style={{
                     marginTop: scrolled ? '0' : '16px',
                     marginBottom: scrolled ? '0' : '8px',
                 }}
             >
                 <div 
-                    className="w-full mx-auto px-4 lg:px-8 2xl:px-14"
+                    className="w-full mx-auto px-3 sm:px-4 lg:px-8 2xl:px-14"
                     style={{
                         background: '#FFFFFF',
                         borderRadius: '20px',
@@ -88,11 +88,11 @@ export default function Layout({ children }) {
                         {/* 5 Partner Logos + ISCME label */}
                         <Link href="/" className="flex items-center gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
                             <div className="flex items-center gap-1.5 sm:gap-2.5 lg:gap-3">
-                                <img src="/logo-iscme.png"  alt="ISCME"  className="h-6 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-6 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-tus.png"    alt="TU Sofia" className="h-6 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-ieee.webp"  alt="IEEE"   className="h-7 sm:h-10 lg:h-[52px] w-auto object-contain" />
-                                <img src="/logo-usm.png"    alt="USM"    className="h-5.5 sm:h-8 lg:h-11 w-auto object-contain" />
+                                <img src="/logo-iscme.png"  alt="ISCME"  className="h-7 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-7 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-tus.png"    alt="TU Sofia" className="hidden sm:inline-block h-7 sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-ieee.webp"  alt="IEEE"   className="hidden md:inline-block h-8 sm:h-10 lg:h-[52px] w-auto object-contain" />
+                                <img src="/logo-usm.png"    alt="USM"    className="hidden md:inline-block h-6 sm:h-8 lg:h-11 w-auto object-contain" />
                             </div>
 
                             {/* Conference label — visible from lg */}
