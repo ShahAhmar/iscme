@@ -13,11 +13,8 @@ class PageSeeder extends Seeder
 
         $homeHtml = '
         <!-- HERO SECTION -->
-        <section class="parallax-container d-flex align-items-center" style="min-height: 90vh;">
-            <video autoplay muted loop playsinline class="parallax-video">
-                <source src="/hero-bg.mp4" type="video/mp4">
-            </video>
-            <div class="position-absolute w-100 h-100" style="background: linear-gradient(135deg, rgba(10,37,64,0.88) 0%, rgba(0,61,108,0.72) 100%); top:0; left:0; z-index:-1;"></div>
+        <section class="parallax-container d-flex align-items-center" style="min-height: 90vh; background: url(\'/hero-bg.png\') no-repeat center center / cover; position: relative;">
+            <div class="position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.45); top:0; left:0; z-index:0;"></div>
             <div class="container position-relative z-1 text-white py-5">
                 <div class="row align-items-center">
                     <div class="col-lg-8">
@@ -44,7 +41,7 @@ class PageSeeder extends Seeder
                         </div>
                     </div>
                     <div class="col-lg-4 mt-5 mt-lg-0 text-lg-end" data-aos="fade-left" data-aos-delay="300">
-                        <div class="d-inline-block p-4 rounded-4 w-100" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); backdrop-filter:blur(12px);">
+                        <div class="d-inline-block p-4 rounded-4 w-100" style="background: url(\'/container-bg.png\') no-repeat center center / cover; border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; z-index: 1;">
                             <div class="mb-3 pb-3 border-bottom border-light border-opacity-25">
                                 <small class="text-white-50 d-block mb-1" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px;">Submission Deadline</small>
                                 <span class="fw-bold text-white" style="font-size:1.05rem;"><i class="bi bi-calendar-check me-2 text-warning"></i>April 20, 2027</span>
