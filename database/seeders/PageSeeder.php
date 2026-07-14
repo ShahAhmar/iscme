@@ -479,19 +479,7 @@ class PageSeeder extends Seeder
                 </div>
             </div>
         </section>
-
-        <!-- CALL TO ACTION -->
-        <section class="py-5 text-white text-center" style="background: linear-gradient(135deg, #003D6C 0%, #0071C6 100%);" data-aos="zoom-in">
-            <div class="container py-3">
-                <h2 class="fw-bold text-white mb-3" style="font-family:\'Space Grotesk\',sans-serif; font-size:2.2rem;">Ready to Present Your Research?</h2>
-                <p class="mb-5 text-white" style="font-size:1.1rem; max-width:600px; margin:0 auto; opacity:0.9;">Submit your paper for ISCME\'27 and join researchers from across the globe in Sofia, Bulgaria — June 2–4, 2027. Paper submissions via Microsoft CMT.</p>
-                <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <a href="https://iscme.gaftim.com" target="_blank" class="btn btn-light text-primary px-5 py-3" style="border-radius:6px; font-weight:700; font-size:1rem;">Register Now <i class="bi bi-arrow-right ms-2"></i></a>
-                    <a href="mailto:iscme@gaftim.com" class="btn btn-outline-light px-5 py-3" style="border-radius:6px; font-weight:600; font-size:1rem;"><i class="bi bi-envelope me-2"></i>iscme@gaftim.com</a>
-                </div>
-            </div>
-        </section>
-
+        
         ';
 
         Page::create([
