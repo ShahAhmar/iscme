@@ -67,7 +67,7 @@ export default function Layout({ children }) {
 
             {/* ── Main Header (Floating rounded card) ────────────────────────────────── */}
             <header
-                className={`z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0 pt-2 px-4' : 'relative pt-3 px-4'}`}
+                className={`z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0 pt-2 px-4' : 'relative py-3 px-4'}`}
             >
                 <div 
                     className="w-full mx-auto px-4 lg:px-8 2xl:px-14"
@@ -84,11 +84,11 @@ export default function Layout({ children }) {
                         {/* 5 Partner Logos + ISCME label */}
                         <Link href="/" className="flex items-center gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
                             <div className="flex items-center gap-2 lg:gap-3">
-                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '72px', width: 'auto', objectFit: 'contain' }} />
-                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '56px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-iscme.png"  alt="ISCME"  style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-tus.png"    alt="TU Sofia" style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-ieee.webp"  alt="IEEE"   style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
+                                <img src="/logo-usm.png"    alt="USM"    style={{ height: '44px', width: 'auto', objectFit: 'contain' }} />
                             </div>
 
                             {/* Conference label — visible from lg */}
