@@ -212,8 +212,8 @@ export default function Layout({ children }) {
             {/* ── CTA Banner ──────────────────────────────────── */}
             <section style={{
                 background: 'linear-gradient(135deg, #1a3a8f 0%, #1A73E8 50%, #0ea5e9 100%)',
-                margin: '0 24px 0 24px',
-                borderRadius: '20px',
+                margin: '0',
+                borderRadius: '0',
                 position: 'relative',
                 overflow: 'hidden',
             }}>
@@ -252,19 +252,19 @@ export default function Layout({ children }) {
             </section>
 
             {/* ── Footer ─────────────────────────────────────── */}
-            <footer style={{ background: '#0d1f38', borderTop: '1px solid rgba(74,157,224,0.08)', margin: '0 24px', borderRadius: '0 0 20px 20px' }}>
+            <footer style={{ background: '#0d1f38', borderTop: '1px solid rgba(74,157,224,0.08)', margin: '0', borderRadius: '0' }}>
                 <div className="max-w-7xl mx-auto px-8 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
                     {/* Col 1 — Logo + About + Social */}
                     <div>
-                        <div className="flex items-center gap-2 mb-4 p-3 rounded-xl" style={{ background:'rgba(255,255,255,0.06)', display:'inline-flex' }}>
-                            <img src="/logo1.png" alt="ISCME" className="h-8 w-auto object-contain" />
-                            <img src="/tus-logo.jpeg" alt="TUS" className="h-8 w-auto object-contain" />
-                            <img src="/gaftim-logo.png" alt="GAFTIM" className="h-8 w-auto object-contain" onError={(e)=>e.target.style.display='none'} />
-                            <img src="/ieee-logo.png" alt="IEEE" className="h-8 w-auto object-contain" onError={(e)=>e.target.style.display='none'} />
-                            <img src="/usm-logo.png" alt="USM" className="h-8 w-auto object-contain" onError={(e)=>e.target.style.display='none'} />
+                        <div className="flex items-center gap-3 p-3 rounded-lg mb-6" style={{ background: '#FFFFFF', display: 'inline-flex', border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                            <img src="/logo-iscme.png" alt="ISCME" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
+                            <img src="/logo-gaftim.png" alt="GAFTIM" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
+                            <img src="/logo-tus.png" alt="TUS" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
+                            <img src="/logo-ieee.webp" alt="IEEE" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
+                            <img src="/logo-usm.png" alt="USM" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
                         </div>
-                        <p className="text-sm leading-relaxed mt-4 mb-5" style={{ color: '#7296b5' }}>
+                        <p className="text-sm leading-relaxed mb-5" style={{ color: '#7296b5' }}>
                             An international scientific conference on management &amp; engineering, co-organized by TU Sofia, GAFTIM, and USM — technically co-sponsored by IEEE.
                         </p>
                         <div className="flex gap-3">
