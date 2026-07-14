@@ -1,6 +1,5 @@
 ---
 deployment:
   tasks:
-    - /usr/bin/git -C /home2/gaftimco/iscme.gaftim.com fetch origin
-    - /usr/bin/git -C /home2/gaftimco/iscme.gaftim.com reset --hard origin/main
-    - /usr/bin/php /home2/gaftimco/iscme.gaftim.com/artisan optimize:clear
+    - cd /home2/gaftimco/iscme.gaftim.com && /usr/bin/git fetch origin && /usr/bin/git reset --hard origin/main
+    - /usr/bin/php /home2/gaftimco/iscme.gaftim.com/artisan optimize:clear 2>/dev/null || true
