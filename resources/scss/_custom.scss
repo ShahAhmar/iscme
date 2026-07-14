@@ -309,9 +309,26 @@ h4.text-white, h5.text-white, h6.text-white {
     background: url('/mobile-hero-bg.png') no-repeat center top / cover !important;
     padding-bottom: 0px !important;
     min-height: auto !important;
-    text-align: left !important; /* Left alignment matching mockup */
+    text-align: center !important; /* CENTER alignment matching mockup */
   }
-  
+
+  /* Center all hero text content on mobile */
+  .parallax-container .container {
+    text-align: center !important;
+  }
+  .parallax-container .col-lg-8 {
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .parallax-container .d-flex.flex-wrap {
+    justify-content: center !important;
+  }
+  .parallax-container .d-flex.gap-3 {
+    justify-content: center !important;
+  }
+
   .stats-bar {
     position: relative !important;
     bottom: auto !important;
@@ -324,26 +341,26 @@ h4.text-white, h5.text-white, h6.text-white {
     margin: 30px 0 20px 0 !important;
     width: 100% !important;
   }
-  
+
   /* 2x2 Grid divider borders for stats bar */
   .stats-bar .col-6 {
     border-right: 1px solid rgba(30, 80, 180, 0.1) !important;
     padding-bottom: 12px;
     text-align: left !important;
   }
-  
+
   .stats-bar .col-6:nth-child(1),
   .stats-bar .col-6:nth-child(2) {
     border-bottom: 1px solid rgba(30, 80, 180, 0.1) !important;
     padding-bottom: 16px;
     margin-bottom: 16px;
   }
-  
+
   .stats-bar .col-6:nth-child(2),
   .stats-bar .col-6:nth-child(4) {
     border-right: none !important;
   }
-  
+
   .stats-bar .col-6:nth-child(3),
   .stats-bar .col-6:nth-child(4) {
     padding-bottom: 0 !important;
