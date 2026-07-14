@@ -86,13 +86,28 @@ export default function Layout({ children }) {
                     <div className="flex items-center justify-between" style={{ height: '88px' }}>
 
                         {/* 5 Partner Logos */}
-                        <Link href="/" className="flex items-center gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
-                            <div className="flex items-center gap-1 sm:gap-2.5 lg:gap-3">
-                                <img src="/logo-iscme.png"  alt="ISCME"  className="h-6.5 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-6.5 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-tus.png"    alt="TU Sofia" className="h-6.5 sm:h-9 lg:h-12 w-auto object-contain" />
-                                <img src="/logo-ieee.webp"  alt="IEEE"   className="h-7.5 sm:h-10 lg:h-[52px] w-auto object-contain" />
-                                <img src="/logo-usm.png"    alt="USM"    className="h-6 sm:h-8 lg:h-11 w-auto object-contain" />
+                        <Link href="/" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
+                            <div className="flex items-center gap-1 sm:gap-2 lg:gap-2.5">
+                                {/* GAFTIM Logo on the far left alone */}
+                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-[26px] sm:h-9 lg:h-12 w-auto object-contain" />
+                                
+                                {/* Vertical divider */}
+                                <div style={{ width: '1px', height: '24px', background: 'rgba(0,0,0,0.12)', margin: '0 2px' }} className="hidden sm:block" />
+                                
+                                {/* TU Sofia (TUS) logo - Made bigger */}
+                                <img src="/logo-tus.png" alt="TU Sofia" className="h-[36px] sm:h-12 lg:h-16 w-auto object-contain" />
+                                
+                                {/* Faculty of Management (FM) logo next to TUS */}
+                                <img src="/logo-fm.jpg" alt="Faculty of Management" className="h-[36px] sm:h-12 lg:h-16 w-auto object-contain" />
+                                
+                                {/* ISCME Logo */}
+                                <img src="/logo-iscme.png" alt="ISCME" className="h-[22px] sm:h-7 lg:h-[38px] w-auto object-contain" />
+                                
+                                {/* IEEE Logo */}
+                                <img src="/logo-ieee.webp" alt="IEEE" className="h-[26px] sm:h-[34px] lg:h-[46px] w-auto object-contain" />
+                                
+                                {/* USM Logo */}
+                                <img src="/logo-usm.png" alt="USM" className="h-[22px] sm:h-[30px] lg:h-10 w-auto object-contain" />
                             </div>
 
                             {/* Conference label — visible from lg */}
