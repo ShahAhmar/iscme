@@ -14,7 +14,7 @@ class PageSeeder extends Seeder
         $homeHtml = '
         <!-- HERO SECTION -->
         <section class="parallax-container d-flex align-items-center" style="min-height: 90vh; background: url(\'/hero-bg.png\') no-repeat center center / cover; position: relative;">
-            <div class="position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.45); top:0; left:0; z-index:0;"></div>
+            <div class="position-absolute w-100 h-100" style="background: linear-gradient(to right, rgba(0,15,40,0.55) 0%, rgba(0,15,40,0.25) 60%, rgba(0,15,40,0.05) 100%); top:0; left:0; z-index:0;"></div>
             <div class="container position-relative z-1 text-white py-5">
                 <div class="row align-items-center">
                     <div class="col-lg-8">
