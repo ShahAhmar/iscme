@@ -21,7 +21,7 @@ export default function Layout({ children }) {
         { name: 'Speakers',   path: '/speakers' },
         { name: 'Sponsors',   path: '/sponsors' },
         { name: 'Exhibition', path: '/exhibition' },
-        { name: 'News',       path: '/news' },
+        { name: 'Submission', path: '/submission' },
         { name: 'Contact',    path: '/contact' },
     ];
 
