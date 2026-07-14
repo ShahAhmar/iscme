@@ -66,8 +66,8 @@ export default function Layout({ children }) {
             <header
                 className={`w-full z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0' : 'relative'}`}
                 style={scrolled
-                    ? { background: 'rgba(228,242,255,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(0,61,108,0.12)', boxShadow: '0 8px 32px rgba(0,61,108,0.1)' }
-                    : { background: '#E4F2FF', borderBottom: '1px solid rgba(0,61,108,0.1)' }
+                    ? { background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }
+                    : { background: '#FFFFFF', borderBottom: '1px solid rgba(0,0,0,0.07)' }
                 }
             >
                 <div className="w-full px-4 lg:px-8 2xl:px-14">
@@ -91,22 +91,20 @@ export default function Layout({ children }) {
                         </Link>
 
                         {/* Desktop Nav */}
-                        <nav className="hidden lg:flex items-center gap-1">
+                        <nav className="hidden lg:flex items-center gap-0.5">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.path}
                                     href={link.path}
-                                    className="relative px-2 xl:px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-colors duration-200"
+                                    className="relative px-3 py-2 text-[11.5px] font-bold tracking-widest uppercase transition-colors duration-200"
                                     style={{
-                                        color: isActive(link.path) ? '#003D6C' : '#4a6e8a',
-                                        fontWeight: isActive(link.path) ? '800' : '600',
+                                        color: isActive(link.path) ? '#0D3A6E' : '#374151',
                                         textDecoration: 'none',
                                     }}
                                 >
                                     {link.name}
-                                    {/* Active dot only — no underline */}
                                     {isActive(link.path) && (
-                                        <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full" style={{ background: '#1d6fa4' }} />
+                                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full" style={{ background: '#0D3A6E' }} />
                                     )}
                                 </Link>
                             ))}
@@ -133,7 +131,7 @@ export default function Layout({ children }) {
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             className="lg:hidden p-2 rounded-lg transition-colors"
-                            style={{ color: '#fff', background: 'rgba(255,255,255,0.08)' }}
+                            style={{ color: '#0D3A6E', background: 'rgba(0,61,108,0.06)' }}
                         >
                             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                         </button>
