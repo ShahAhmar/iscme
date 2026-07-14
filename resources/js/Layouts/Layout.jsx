@@ -29,7 +29,10 @@ export default function Layout({ children }) {
         path === '/' ? url === '/' || url === '' : url.startsWith(path);
 
     return (
-        <div className="min-h-screen flex flex-col" style={{ fontFamily: "'Inter', 'Space Grotesk', sans-serif" }}>
+        <div className="min-h-screen flex flex-col" style={{
+            fontFamily: "'Inter', 'Space Grotesk', sans-serif",
+            background: 'radial-gradient(circle at top left, #F2F8FC 0%, #FFFFFF 100%)',
+        }}>
 
             {/* ── Topbar ─────────────────────────────────────── */}
             <div style={{ background: '#071e3d', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
@@ -62,15 +65,20 @@ export default function Layout({ children }) {
                 </div>
             </div>
 
-            {/* ── Main Header ────────────────────────────────── */}
+            {/* ── Main Header (Floating rounded card) ────────────────────────────────── */}
             <header
-                className={`w-full z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0' : 'relative'}`}
-                style={scrolled
-                    ? { background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }
-                    : { background: '#FFFFFF', borderBottom: '1px solid rgba(0,0,0,0.07)' }
-                }
+                className={`z-50 transition-all duration-400 ${scrolled ? 'fixed top-0 left-0 right-0 pt-2 px-4' : 'relative pt-3 px-4'}`}
             >
-                <div className="w-full px-4 lg:px-8 2xl:px-14">
+                <div 
+                    className="w-full mx-auto px-4 lg:px-8 2xl:px-14"
+                    style={{
+                        background: '#FFFFFF',
+                        borderRadius: '20px',
+                        boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.04)',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        transition: 'all 0.3s ease',
+                    }}
+                >
                     <div className="flex items-center justify-between" style={{ height: '88px' }}>
 
                         {/* 5 Partner Logos + ISCME label */}
