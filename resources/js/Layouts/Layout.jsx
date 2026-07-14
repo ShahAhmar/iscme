@@ -31,7 +31,7 @@ export default function Layout({ children }) {
     return (
         <div className="min-h-screen flex flex-col" style={{
             fontFamily: "'Inter', 'Space Grotesk', sans-serif",
-            background: 'radial-gradient(circle at top left, #F2F8FC 0%, #FFFFFF 100%)',
+            background: 'linear-gradient(to bottom, #071e3d 0%, #071e3d 200px, #FFFFFF 200px)',
         }}>
 
             {/* ── Topbar ─────────────────────────────────────── */}
