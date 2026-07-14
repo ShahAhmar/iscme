@@ -185,45 +185,71 @@ class PageSeeder extends Seeder
         </section>
 
         <!-- IMPORTANT DATES -->
-        <section class="py-5" style="background-color:#0A2540;" data-aos="fade-up">
-            <div class="container py-3">
+        <section class="py-5" style="background: linear-gradient(135deg, #071e3d 0%, #0d2a4f 50%, #071e3d 100%); position: relative; overflow: hidden;" data-aos="fade-up">
+            <!-- Background decoration -->
+            <div style="position:absolute; top:-100px; left:-100px; width:400px; height:400px; background:radial-gradient(circle, rgba(26,115,232,0.08) 0%, transparent 70%); border-radius:50%; pointer-events:none;"></div>
+            <div style="position:absolute; bottom:-80px; right:-80px; width:350px; height:350px; background:radial-gradient(circle, rgba(91,184,255,0.06) 0%, transparent 70%); border-radius:50%; pointer-events:none;"></div>
+
+            <div class="container py-4 position-relative">
                 <div class="text-center mb-5">
-                    <p class="fw-bold text-uppercase mb-2" style="letter-spacing:2px; font-size:0.8rem; color:#5BB8FF;">Mark Your Calendar</p>
-                    <h2 class="fw-bold text-white" style="font-family:\'Space Grotesk\',sans-serif;">Important Dates</h2>
+                    <p class="fw-bold text-uppercase mb-2" style="letter-spacing:3px; font-size:0.75rem; color:#5BB8FF;">Mark Your Calendar</p>
+                    <div style="width:40px; height:2px; background:linear-gradient(90deg, #1A73E8, #5BB8FF); margin:0 auto 16px; border-radius:2px;"></div>
+                    <h2 class="fw-bold text-white" style="font-family:\'Space Grotesk\',sans-serif; font-size:2.2rem;">Important Dates</h2>
                 </div>
                 <div class="row g-4 text-center">
+
+                    <!-- Card 1 -->
                     <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
-                        <div class="rounded-4 p-4 h-100" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);">
-                            <i class="bi bi-file-earmark-text text-warning mb-3" style="font-size:2.2rem;"></i>
-                            <h6 class="text-white-50 text-uppercase mb-2" style="font-size:0.75rem; letter-spacing:1px;">Submission Deadline</h6>
-                            <h3 class="fw-bold text-white mb-1">April 20</h3>
-                            <p class="text-white-50 mb-0" style="font-size:0.9rem;">2027</p>
+                        <div class="rounded-4 p-4 h-100 d-flex flex-column align-items-center justify-content-center" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(10px); transition:all 0.3s ease; cursor:default;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width:64px; height:64px; background:rgba(255,183,0,0.12); border:1px solid rgba(255,183,0,0.25);">
+                                <i class="bi bi-file-earmark-text" style="font-size:1.8rem; color:#F59E0B;"></i>
+                            </div>
+                            <h6 class="text-uppercase mb-3" style="font-size:0.72rem; letter-spacing:1.5px; color:#94afc8; font-weight:700;">Submission Deadline</h6>
+                            <div style="width:30px; height:1.5px; background:rgba(255,183,0,0.4); margin:0 auto 16px; border-radius:2px;"></div>
+                            <h3 class="fw-bold text-white mb-1" style="font-size:2rem; font-family:\'Space Grotesk\',sans-serif;">April 20</h3>
+                            <p class="mb-0" style="font-size:0.9rem; color:#5E7E9F;">2027</p>
                         </div>
                     </div>
+
+                    <!-- Card 2 -->
                     <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
-                        <div class="rounded-4 p-4 h-100" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);">
-                            <i class="bi bi-envelope-check text-info mb-3" style="font-size:2.2rem;"></i>
-                            <h6 class="text-white-50 text-uppercase mb-2" style="font-size:0.75rem; letter-spacing:1px;">Acceptance Deadline</h6>
-                            <h3 class="fw-bold text-white mb-1">May 10</h3>
-                            <p class="text-white-50 mb-0" style="font-size:0.9rem;">2027</p>
+                        <div class="rounded-4 p-4 h-100 d-flex flex-column align-items-center justify-content-center" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(10px); transition:all 0.3s ease; cursor:default;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width:64px; height:64px; background:rgba(255,183,0,0.12); border:1px solid rgba(255,183,0,0.25);">
+                                <i class="bi bi-envelope-check" style="font-size:1.8rem; color:#F59E0B;"></i>
+                            </div>
+                            <h6 class="text-uppercase mb-3" style="font-size:0.72rem; letter-spacing:1.5px; color:#94afc8; font-weight:700;">Acceptance Notification</h6>
+                            <div style="width:30px; height:1.5px; background:rgba(255,183,0,0.4); margin:0 auto 16px; border-radius:2px;"></div>
+                            <h3 class="fw-bold text-white mb-1" style="font-size:2rem; font-family:\'Space Grotesk\',sans-serif;">May 10</h3>
+                            <p class="mb-0" style="font-size:0.9rem; color:#5E7E9F;">2027</p>
                         </div>
                     </div>
+
+                    <!-- Card 3 -->
                     <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
-                        <div class="rounded-4 p-4 h-100" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);">
-                            <i class="bi bi-tag text-success mb-3" style="font-size:2.2rem;"></i>
-                            <h6 class="text-white-50 text-uppercase mb-2" style="font-size:0.75rem; letter-spacing:1px;">Registration</h6>
-                            <h3 class="fw-bold text-white mb-1">May 15</h3>
-                            <p class="text-white-50 mb-0" style="font-size:0.9rem;">Early Bird &nbsp;|&nbsp; May 20 Normal</p>
+                        <div class="rounded-4 p-4 h-100 d-flex flex-column align-items-center justify-content-center" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(10px); transition:all 0.3s ease; cursor:default;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width:64px; height:64px; background:rgba(255,183,0,0.12); border:1px solid rgba(255,183,0,0.25);">
+                                <i class="bi bi-tag" style="font-size:1.8rem; color:#F59E0B;"></i>
+                            </div>
+                            <h6 class="text-uppercase mb-3" style="font-size:0.72rem; letter-spacing:1.5px; color:#94afc8; font-weight:700;">Early Bird Registration</h6>
+                            <div style="width:30px; height:1.5px; background:rgba(255,183,0,0.4); margin:0 auto 16px; border-radius:2px;"></div>
+                            <h3 class="fw-bold text-white mb-1" style="font-size:2rem; font-family:\'Space Grotesk\',sans-serif;">May 15</h3>
+                            <p class="mb-0" style="font-size:0.9rem; color:#5E7E9F;">Last Day to Avail Discount</p>
                         </div>
                     </div>
+
+                    <!-- Card 4 — Highlighted -->
                     <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
-                        <div class="rounded-4 p-4 h-100" style="background:rgba(91,184,255,0.12); border:2px solid rgba(91,184,255,0.4);">
-                            <i class="bi bi-flag-fill mb-3" style="font-size:2.2rem; color:#5BB8FF;"></i>
-                            <h6 class="text-white-50 text-uppercase mb-2" style="font-size:0.75rem; letter-spacing:1px;">Conference Dates</h6>
-                            <h3 class="fw-bold text-white mb-1">June 2–4</h3>
-                            <p class="mb-0" style="font-size:0.9rem; color:#5BB8FF;">2027, Sofia, Bulgaria</p>
+                        <div class="rounded-4 p-4 h-100 d-flex flex-column align-items-center justify-content-center" style="background:rgba(26,115,232,0.1); border:2px solid rgba(91,184,255,0.45); backdrop-filter:blur(10px); box-shadow:0 0 30px rgba(91,184,255,0.12), inset 0 1px 0 rgba(255,255,255,0.08); transition:all 0.3s ease; cursor:default;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width:64px; height:64px; background:rgba(91,184,255,0.15); border:1px solid rgba(91,184,255,0.35);">
+                                <i class="bi bi-flag" style="font-size:1.8rem; color:#5BB8FF;"></i>
+                            </div>
+                            <h6 class="text-uppercase mb-3" style="font-size:0.72rem; letter-spacing:1.5px; color:#94afc8; font-weight:700;">Conference Dates</h6>
+                            <div style="width:30px; height:1.5px; background:rgba(91,184,255,0.5); margin:0 auto 16px; border-radius:2px;"></div>
+                            <h3 class="fw-bold text-white mb-1" style="font-size:2rem; font-family:\'Space Grotesk\',sans-serif;">June 2–4</h3>
+                            <p class="mb-0" style="font-size:0.9rem; color:#5BB8FF;">2027 &bull; Sofia, Bulgaria</p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
