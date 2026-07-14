@@ -67,53 +67,53 @@ class PageSeeder extends Seeder
                 </div>
             </div>
             <!-- STATS BAR -->
-            <div class="stats-bar w-100 py-4 px-5" style="background: linear-gradient(90deg, #0A3A6E 0%, #031D3B 100%); border-top: 1px solid rgba(255,255,255,0.1); position: absolute; bottom: 0; left: 0; z-index: 2;">
-                <div class="row text-white align-items-center text-center text-md-start">
-                    <div class="col-md-3 border-end border-white border-opacity-10 py-2">
+            <div class="stats-bar w-100 py-4 px-5" style="background: rgba(255,255,255,0.25); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1.5px solid rgba(255,255,255,0.55); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 -4px 24px rgba(30,80,180,0.08); position: absolute; bottom: 0; left: 0; z-index: 2;">
+                <div class="row align-items-center text-center text-md-start">
+                    <div class="col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
                         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(255,255,255,0.08); width: 50px; height: 50px;">
-                                <i class="bi bi-calendar3" style="font-size: 1.3rem; color: #5BB8FF;"></i>
+                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2);">
+                                <i class="bi bi-calendar3" style="font-size: 1.3rem; color: #1A73E8;"></i>
                             </div>
                             <div>
-                                <small class="text-white-50 text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">Date</small>
-                                <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2;">2 - 4 June, 2027</span>
-                                <small class="text-white-50" style="font-size: 0.7rem;">3 Days Conference</small>
+                                <small class="text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; color: #5E7E9F;">Date</small>
+                                <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2; color: #0D3A6E;">2 - 4 June, 2027</span>
+                                <small style="font-size: 0.7rem; color: #7096b2;">3 Days Conference</small>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 border-end border-white border-opacity-10 py-2">
+                    <div class="col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
                         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(255,255,255,0.08); width: 50px; height: 50px;">
-                                <i class="bi bi-geo-alt" style="font-size: 1.3rem; color: #5BB8FF;"></i>
+                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2);">
+                                <i class="bi bi-geo-alt" style="font-size: 1.3rem; color: #1A73E8;"></i>
                             </div>
                             <div>
-                                <small class="text-white-50 text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">Venue</small>
-                                <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2;">Sofia, Bulgaria</span>
-                                <small class="text-white-50" style="font-size: 0.7rem;">Technical University of Sofia</small>
+                                <small class="text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; color: #5E7E9F;">Venue</small>
+                                <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2; color: #0D3A6E;">Sofia, Bulgaria</span>
+                                <small style="font-size: 0.7rem; color: #7096b2;">Technical University of Sofia</small>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 border-end border-white border-opacity-10 py-2">
+                    <div class="col-md-3 border-end py-2" style="border-color: rgba(30,80,180,0.15) !important;">
                         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(255,255,255,0.08); width: 50px; height: 50px;">
-                                <i class="bi bi-people" style="font-size: 1.3rem; color: #5BB8FF;"></i>
+                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2);">
+                                <i class="bi bi-people" style="font-size: 1.3rem; color: #1A73E8;"></i>
                             </div>
                             <div>
-                                <small class="text-white-50 text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">Participants</small>
-                                <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2;">1000+</span>
-                                <small class="text-white-50" style="font-size: 0.7rem;">Researchers & Academicians</small>
+                                <small class="text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; color: #5E7E9F;">Participants</small>
+                                <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2; color: #0D3A6E;">1000+</span>
+                                <small style="font-size: 0.7rem; color: #7096b2;">Researchers &amp; Academicians</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 py-2">
                         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(255,255,255,0.08); width: 50px; height: 50px;">
-                                <i class="bi bi-award" style="font-size: 1.3rem; color: #5BB8FF;"></i>
+                            <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(26,115,232,0.12); width: 50px; height: 50px; border: 1px solid rgba(26,115,232,0.2);">
+                                <i class="bi bi-award" style="font-size: 1.3rem; color: #1A73E8;"></i>
                             </div>
                             <div>
-                                <small class="text-white-50 text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">Tracks</small>
-                                <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2;">15+</span>
-                                <small class="text-white-50" style="font-size: 0.7rem;">Topics & Special Sessions</small>
+                                <small class="text-uppercase d-block fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; color: #5E7E9F;">Tracks</small>
+                                <span class="d-block fw-bold" style="font-size: 1rem; line-height: 1.2; color: #0D3A6E;">15+</span>
+                                <small style="font-size: 0.7rem; color: #7096b2;">Topics &amp; Special Sessions</small>
                             </div>
                         </div>
                     </div>
