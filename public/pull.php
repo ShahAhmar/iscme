@@ -20,13 +20,16 @@ $url  = REPO_URL;
 // 1. Ensure remote URL is correct
 $remoteSet = shell_exec("cd $path && $git remote set-url origin $url 2>&1");
 
-// 2. Fetch latest from remote
+// 2. Run git gc to prune old objects and free space on server
+shell_exec("cd $path && $git gc --prune=now 2>&1");
+
+// 3. Fetch latest from remote
 $fetch = shell_exec("cd $path && $git fetch origin 2>&1");
 
-// 3. Hard reset to origin/main
+// 4. Hard reset to origin/main
 $reset = shell_exec("cd $path && $git reset --hard origin/" . GIT_BRANCH . " 2>&1");
 
-// 4. Fallback: if git failed, download critical files
+// 5. Fallback: if git failed, download critical files
 $gitWorked = strpos($reset, 'HEAD is now at') !== false;
 $fallback  = '';
 if (!$gitWorked) {
@@ -51,14 +54,14 @@ if (!$gitWorked) {
     }
 }
 
-// 5. Clear route & config cache directly
+// 6. Clear route & config cache directly
 if (file_exists($path . '/bootstrap/cache/routes-v7.php')) @unlink($path . '/bootstrap/cache/routes-v7.php');
 if (file_exists($path . '/bootstrap/cache/config.php')) @unlink($path . '/bootstrap/cache/config.php');
 
-// 6. Run artisan optimize:clear
+// 7. Run artisan optimize:clear
 $artisan = shell_exec("cd $path && $php artisan optimize:clear 2>&1");
 
-// 7. Log deployment
+// 8. Log deployment
 $commit = shell_exec("cd $path && $git log --oneline -1 2>&1");
 $log = date('Y-m-d H:i:s') . " | PULL DEPLOYED: $commit\nFETCH: $fetch\nRESET: $reset\nFALLBACK: $fallback\n---\n";
 @file_put_contents($path . '/storage/logs/deploy.log', $log, FILE_APPEND | LOCK_EX);
