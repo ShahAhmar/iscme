@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use App\Models\MenuItem;
+use App\Models\SiteSetting;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -37,7 +39,29 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            //
+            'auth' => [
+                'user' => $request->user()?->only('id', 'name', 'email', 'role'),
+            ],
+            'navigation' => fn () => MenuItem::where('location', 'header')->where('is_published', true)->orderBy('sort_order')->get(['label', 'url', 'target']),
+            'site' => function () {
+                $defaults = [
+                    'site_name' => 'ISCME 2027',
+                    'tagline' => 'International Scientific Conference on Management & Engineering',
+                    'contact_email' => 'iscme@gaftim.com',
+                    'contact_phone' => '',
+                    'address' => 'Sofia, Bulgaria',
+                    'primary_color' => '#003D6C',
+                    'facebook_url' => '',
+                    'linkedin_url' => '',
+                    'x_url' => '',
+                ];
+
+                $stored = SiteSetting::where('group', 'general')->get()
+                    ->mapWithKeys(fn ($setting) => [$setting->key => $setting->value['value'] ?? ''])
+                    ->all();
+
+                return array_replace($defaults, $stored);
+            },
         ];
     }
 }

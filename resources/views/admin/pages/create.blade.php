@@ -14,7 +14,8 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label fw-bold">Page Title</label>
-                <input type="text" class="form-control" id="title" name="title" required placeholder="e.g. Sponsors, Call for Papers">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" required placeholder="e.g. Sponsors, Call for Papers">
+                @error('title')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             
             <div class="mb-4 form-check">

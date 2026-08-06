@@ -62,26 +62,36 @@
             height: 'calc(100vh - 45px)',
             width: 'auto',
             storageManager: false,
+            canvas: {
+                styles: @json($canvasStyles),
+            },
             plugins: ['gjs-blocks-basic'],
             pluginsOpts: {
                 'gjs-blocks-basic': { flexGrid: true }
             }
         });
 
-        // Load existing page data if available
-        const existingComponents = {!! $page->components && $page->components !== '[]' ? $page->components : 'null' !!};
-        const existingStyles = {!! $page->styles && $page->styles !== '[]' ? $page->styles : 'null' !!};
-        
-        if (existingComponents) {
+        // Load existing page data. Older records stored components as the string "[]";
+        // normalise that legacy format before deciding whether to use components or HTML.
+        const normaliseStoredJson = (value) => {
+            if (typeof value !== 'string') return value;
+            try { return JSON.parse(value); } catch { return null; }
+        };
+        const existingComponents = normaliseStoredJson(@json($page->components ?: null));
+        const existingHtml = @json($page->html ?? '');
+        const existingCss = @json($page->css ?? '');
+        const hasExistingComponents = Array.isArray(existingComponents)
+            ? existingComponents.length > 0
+            : Boolean(existingComponents && typeof existingComponents === 'object');
+
+        if (hasExistingComponents) {
             editor.setComponents(existingComponents);
-            if(existingStyles) editor.setStyle(existingStyles);
-        } else {
-            const existingHtml = `{!! addslashes($page->html ?? '') !!}`;
-            const existingCss = `{!! addslashes($page->css ?? '') !!}`;
-            if(existingHtml) {
-                editor.setComponents(existingHtml);
-                if(existingCss) editor.setStyle(existingCss);
-            }
+        } else if (existingHtml) {
+            editor.setComponents(existingHtml);
+        }
+
+        if (existingCss) {
+            editor.setStyle(existingCss);
         }
 
         // Handle Save
@@ -93,8 +103,7 @@
 
             const html = editor.getHtml();
             const css = editor.getCss();
-            const components = editor.getComponents();
-            const styles = editor.getStyle();
+            const components = editor.getComponents().toJSON();
 
             fetch('{{ route("admin.pages.builder.save", $page->id) }}', {
                 method: 'POST',
@@ -102,7 +111,7 @@
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
-                body: JSON.stringify({ html, css, components, styles })
+                body: JSON.stringify({ html, css, components, styles: [] })
             })
             .then(response => response.json())
             .then(data => {

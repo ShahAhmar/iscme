@@ -3,8 +3,30 @@ import { Link, usePage } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight, Mail, Calendar, MapPin, Award, ChevronDown } from 'lucide-react';
 
+function NavigationLink({ link, children, ...props }) {
+    const isExternal = /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(link.path);
+
+    if (isExternal) {
+        return <a href={link.path} target={link.target || undefined} rel={link.target === '_blank' ? 'noreferrer' : undefined} {...props}>{children}</a>;
+    }
+
+    return <Link href={link.path} target={link.target || undefined} {...props}>{children}</Link>;
+}
+
 export default function Layout({ children }) {
-    const { url } = usePage();
+    const { url, props } = usePage();
+    const site = {
+        site_name: 'ISCME 2027',
+        tagline: 'International Scientific Conference on Management & Engineering',
+        contact_email: 'iscme@gaftim.com',
+        contact_phone: '',
+        address: 'Sofia, Bulgaria',
+        primary_color: '#003D6C',
+        facebook_url: '',
+        linkedin_url: '',
+        x_url: '',
+        ...props.site,
+    };
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -14,7 +36,7 @@ export default function Layout({ children }) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navLinks = [
+    const defaultNavLinks = [
         { name: 'Home',       path: '/' },
         { name: 'About',      path: '/about' },
         { name: 'Program',    path: '/program' },
@@ -24,6 +46,7 @@ export default function Layout({ children }) {
         { name: 'Submission', path: '/submission' },
         { name: 'Contact',    path: '/contact' },
     ];
+    const navLinks = props.navigation?.length ? props.navigation.map(item => ({ name: item.label, path: item.url, target: item.target })) : defaultNavLinks;
 
     const isActive = (path) =>
         path === '/' ? url === '/' || url === '' : url.startsWith(path);
@@ -48,7 +71,7 @@ export default function Layout({ children }) {
                         </span>
                         <span className="flex items-center gap-1.5">
                             <Mail size={12} style={{ color: '#4a9de0' }} />
-                            iscme@gaftim.com
+                            {site.contact_email}
                         </span>
                     </div>
                     <div className="hidden md:flex items-center gap-4 text-xs">
@@ -74,7 +97,7 @@ export default function Layout({ children }) {
                 }}
             >
                 <div 
-                    className="w-full mx-auto px-2 sm:px-4 lg:px-8 2xl:px-14"
+                    className="w-full mx-auto px-2 sm:px-4 lg:px-6 2xl:px-10 overflow-hidden"
                     style={{
                         background: '#FFFFFF',
                         borderRadius: '20px',
@@ -83,70 +106,71 @@ export default function Layout({ children }) {
                         transition: 'all 0.3s ease',
                     }}
                 >
-                    <div className="flex items-center justify-between" style={{ height: '88px' }}>
+                    <div className="flex items-center justify-between gap-2" style={{ height: '88px' }}>
 
                         {/* 5 Partner Logos */}
-                        <Link href="/" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0" style={{ textDecoration: 'none' }}>
-                            <div className="flex items-center gap-1 sm:gap-2 lg:gap-2.5">
+                        <Link href="/" className="flex items-center gap-2 group flex-shrink-0" style={{ textDecoration: 'none' }}>
+                            <div className="flex items-center gap-1 sm:gap-1.5 xl:gap-2">
                                 {/* GAFTIM Logo on the far left alone */}
-                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-[26px] sm:h-9 lg:h-12 w-auto object-contain" />
+                                <img src="/logo-gaftim.png" alt="GAFTIM" className="h-[22px] sm:h-7 xl:h-10 w-auto object-contain" />
                                 
                                 {/* Vertical divider */}
-                                <div style={{ width: '1px', height: '24px', background: 'rgba(0,0,0,0.12)', margin: '0 2px' }} className="hidden sm:block" />
+                                <div style={{ width: '1px', height: '20px', background: 'rgba(0,0,0,0.12)', margin: '0 2px' }} className="hidden sm:block" />
                                 
-                                {/* TU Sofia (TUS) logo - Made bigger */}
-                                <img src="/logo-tus.png" alt="TU Sofia" className="h-[36px] sm:h-12 lg:h-16 w-auto object-contain" />
+                                {/* TU Sofia (TUS) logo */}
+                                <img src="/logo-tus.png" alt="TU Sofia" className="h-[28px] sm:h-9 xl:h-13 w-auto object-contain" />
                                 
                                 {/* Faculty of Management (FM) logo next to TUS */}
-                                <img src="/logo-fm.jpg" alt="Faculty of Management" className="h-[36px] sm:h-12 lg:h-16 w-auto object-contain" />
+                                <img src="/logo-fm.jpg" alt="Faculty of Management" className="h-[28px] sm:h-9 xl:h-13 w-auto object-contain" />
                                 
                                 {/* ISCME Logo */}
-                                <img src="/logo-iscme.png" alt="ISCME" className="h-[22px] sm:h-7 lg:h-[38px] w-auto object-contain" />
+                                <img src="/logo-iscme.png" alt="ISCME" className="h-[20px] sm:h-6 xl:h-[32px] w-auto object-contain" />
                                 
                                 {/* IEEE Logo */}
-                                <img src="/logo-ieee.webp" alt="IEEE" className="h-[26px] sm:h-[34px] lg:h-[46px] w-auto object-contain" />
+                                <img src="/logo-ieee.webp" alt="IEEE" className="h-[22px] sm:h-[28px] xl:h-[38px] w-auto object-contain" />
                                 
                                 {/* USM Logo */}
-                                <img src="/logo-usm.png" alt="USM" className="h-[22px] sm:h-[30px] lg:h-10 w-auto object-contain" />
+                                <img src="/logo-usm.png" alt="USM" className="h-[20px] sm:h-[24px] xl:h-8 w-auto object-contain" />
                             </div>
 
-                            {/* Conference label — visible from lg */}
-                            <div className="hidden lg:flex flex-col ml-1" style={{ borderLeft: '1.5px solid rgba(0,61,108,0.2)', paddingLeft: '14px' }}>
-                                <span className="font-black leading-tight tracking-tight" style={{ color: '#003D6C', fontSize: '1.1rem' }}>ISCME <span style={{ color: '#1565C0' }}>'27</span></span>
-                                <span style={{ color: '#7096b2', fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Sofia, Bulgaria · June 2027</span>
+                            {/* Conference label — visible only on 2xl screens */}
+                            <div className="hidden 2xl:flex flex-col ml-1" style={{ borderLeft: '1.5px solid rgba(0,61,108,0.2)', paddingLeft: '12px' }}>
+                                <span className="font-black leading-tight tracking-tight" style={{ color: site.primary_color, fontSize: '1rem' }}>{site.site_name}</span>
+                                <span style={{ color: '#7096b2', fontSize: '0.62rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{site.address}</span>
                             </div>
                         </Link>
 
-                        {/* Desktop Nav */}
-                        <nav className="hidden lg:flex items-center gap-0.5">
+                        {/* Desktop Nav — visible on xl (1280px+) */}
+                        <nav className="hidden xl:flex items-center gap-0.5 flex-shrink-0">
                             {navLinks.map((link) => (
-                                <Link
+                                <NavigationLink
                                     key={link.path}
-                                    href={link.path}
-                                    className="relative px-3 py-2 text-[11.5px] font-bold tracking-widest uppercase transition-colors duration-200"
+                                    link={link}
+                                    className="relative px-2.5 py-2 text-[11px] font-bold tracking-wider uppercase transition-colors duration-200"
                                     style={{
-                                        color: isActive(link.path) ? '#0D3A6E' : '#374151',
+                                        color: isActive(link.path) ? site.primary_color : '#374151',
                                         textDecoration: 'none',
                                     }}
                                 >
                                     {link.name}
                                     {isActive(link.path) && (
-                                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full" style={{ background: '#0D3A6E' }} />
+                                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full" style={{ background: site.primary_color }} />
                                     )}
-                                </Link>
+                                </NavigationLink>
                             ))}
                         </nav>
 
-                        {/* Register CTA */}
-                        <div className="hidden lg:flex items-center gap-3">
+                        {/* Register CTA — visible on xl (1280px+) */}
+                        <div className="hidden xl:flex items-center gap-2 flex-shrink-0">
                             <Link
                                 href="/register"
-                                className="flex items-center gap-2 group px-5 py-2.5 text-xs font-bold tracking-widest uppercase text-white transition-all duration-200"
+                                className="flex items-center gap-1.5 group px-4 py-2.5 text-xs font-bold tracking-wider uppercase text-white transition-all duration-200"
                                 style={{
-                                    background: '#0D3A6E',
+                                    background: site.primary_color,
                                     borderRadius: '6px',
-                                    letterSpacing: '0.08em',
+                                    letterSpacing: '0.06em',
                                     textDecoration: 'none',
+                                    whiteSpace: 'nowrap',
                                 }}
                             >
                                 REGISTER NOW
@@ -157,7 +181,7 @@ export default function Layout({ children }) {
                         {/* Mobile Toggle - Solid blue with white icon */}
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="lg:hidden p-2.5 rounded-lg transition-all"
+                            className="xl:hidden p-2.5 rounded-lg transition-all flex-shrink-0"
                             style={{ color: '#FFFFFF', background: '#007BFF', boxShadow: '0 4px 12px rgba(0, 123, 255, 0.25)' }}
                         >
                             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -179,9 +203,9 @@ export default function Layout({ children }) {
                     >
                         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-1">
                             {navLinks.map((link) => (
-                                <Link
+                                <NavigationLink
                                     key={link.path}
-                                    href={link.path}
+                                    link={link}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="py-3 text-sm font-semibold tracking-wider uppercase border-b transition-colors"
                                     style={{
@@ -191,7 +215,7 @@ export default function Layout({ children }) {
                                     }}
                                 >
                                     {link.name}
-                                </Link>
+                                </NavigationLink>
                             ))}
                             <Link
                                 href="/register"
@@ -260,7 +284,7 @@ export default function Layout({ children }) {
                             textDecoration:'none', fontSize:'0.95rem',
                             border:'1.5px solid rgba(255,255,255,0.6)', transition:'all 0.2s'
                         }}>
-                            <Mail size={16} /> iscme@gaftim.com
+                            <Mail size={16} /> {site.contact_email}
                         </a>
                     </div>
                 </div>
@@ -280,13 +304,13 @@ export default function Layout({ children }) {
                             <img src="/logo-usm.png" alt="USM" style={{ height: '22px', width: 'auto', objectFit: 'contain' }} />
                         </div>
                         <p className="text-sm leading-relaxed mb-5" style={{ color: '#7296b5' }}>
-                            An international scientific conference on management &amp; engineering, co-organized by TU Sofia, GAFTIM, and USM — technically co-sponsored by IEEE.
+                            {site.tagline}
                         </p>
                         <div className="flex gap-3">
                             {[
-                                { href:'#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> },
-                                { href:'#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg> },
-                                { href:'#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> },
+                                { href: site.linkedin_url || '#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> },
+                                { href: site.x_url || '#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg> },
+                                { href: site.facebook_url || '#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> },
                                 { href:'#', svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg> },
                             ].map((s, i) => (
                                 <a key={i} href={s.href} style={{
@@ -306,12 +330,12 @@ export default function Layout({ children }) {
                         <div style={{ width:'32px', height:'2px', background:'linear-gradient(90deg,#1A73E8,#5BB8FF)', borderRadius:'2px', marginBottom:'18px' }}></div>
                         <div className="grid grid-cols-2 gap-y-3 gap-x-4">
                             {navLinks.map((link) => (
-                                <Link key={link.path} href={link.path}
+                                <NavigationLink key={link.path} link={link}
                                     className="text-sm transition-colors flex items-center gap-1.5"
                                     style={{ color: '#7296b5', textDecoration:'none' }}>
                                     <ChevronDown size={12} style={{ transform:'rotate(-90deg)', color:'#4a9de0', flexShrink:0 }} />
                                     {link.name}
-                                </Link>
+                                </NavigationLink>
                             ))}
                         </div>
                     </div>
@@ -331,7 +355,7 @@ export default function Layout({ children }) {
                                 <span style={{ width:'34px', height:'34px', borderRadius:'50%', background:'rgba(26,115,232,0.15)', border:'1px solid rgba(26,115,232,0.25)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
                                     <MapPin size={15} style={{ color: '#4a9de0' }} />
                                 </span>
-                                <span style={{ paddingTop:'4px' }}>Technical University of Sofia,<br />Studentski grad, Sofia, Bulgaria</span>
+                                <span style={{ paddingTop:'4px' }}>{site.address}</span>
                             </span>
                         </div>
                     </div>
@@ -345,7 +369,7 @@ export default function Layout({ children }) {
                                 <span style={{ width:'34px', height:'34px', borderRadius:'50%', background:'rgba(26,115,232,0.15)', border:'1px solid rgba(26,115,232,0.25)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
                                     <Mail size={15} style={{ color: '#4a9de0' }} />
                                 </span>
-                                iscme@gaftim.com
+                                {site.contact_email}
                             </span>
                             <div className="mt-3 pt-4" style={{ borderTop: '1px solid rgba(74,157,224,0.1)' }}>
                                 <p className="text-xs mb-1" style={{ color: '#4a6a8a' }}>Technical Sponsor</p>
@@ -358,7 +382,7 @@ export default function Layout({ children }) {
                 {/* Bottom bar */}
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                     <div className="max-w-7xl mx-auto px-8 py-5 flex flex-col md:flex-row justify-between items-center gap-3 text-xs" style={{ color: '#4a6a8a' }}>
-                        <p>&copy; {new Date().getFullYear()} ISCME '27 - International Scientific Conference on Management &amp; Engineering. All rights reserved.</p>
+                        <p>&copy; {new Date().getFullYear()} {site.site_name} — {site.tagline}. All rights reserved.</p>
                         <div className="flex items-center gap-3">
                             <a href="#" style={{ color:'#4a6a8a', textDecoration:'none' }}>Privacy</a>
                             <span style={{ color:'rgba(74,106,138,0.4)' }}>|</span>

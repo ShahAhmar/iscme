@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Vite;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class PageController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $pages = Page::latest()->get();
-        return view('admin.pages.index', compact('pages'));
+        return Inertia::render('Admin/Pages/Index', compact('pages'));
     }
 
     public function create()
@@ -39,10 +42,10 @@ class PageController extends Controller
             'title' => $request->title,
             'slug' => $slug,
             'is_published' => $request->has('is_published'),
-            'html' => '<div class="container py-5 mt-5"><h1>' . $request->title . '</h1><p>Start building your page here...</p></div>',
+            'html' => '<div class="container py-5 mt-5"><h1>' . e($request->title) . '</h1><p>Start building your page here...</p></div>',
             'css' => '',
-            'components' => '[]',
-            'styles' => '[]',
+            'components' => [],
+            'styles' => [],
         ]);
 
         return redirect()->route('admin.pages.builder', $page->id)->with('success', 'Page created! Start building now.');
@@ -75,16 +78,30 @@ class PageController extends Controller
 
     public function builder(Page $page)
     {
-        return view('builder', compact('page'));
+        return view('builder', [
+            'page' => $page,
+            'canvasStyles' => [
+                Vite::asset('resources/scss/app.scss'),
+                'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
+                'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap',
+            ],
+        ]);
     }
 
     public function saveBuilder(Request $request, Page $page)
     {
+        $data = $request->validate([
+            'html' => ['nullable', 'string'],
+            'css' => ['nullable', 'string'],
+            'components' => ['nullable'],
+            'styles' => ['nullable'],
+        ]);
+
         $page->update([
-            'html' => $request->html,
-            'css' => $request->css,
-            'components' => $request->components,
-            'styles' => $request->styles,
+            'html' => $data['html'] ?? '',
+            'css' => $data['css'] ?? '',
+            'components' => is_array($data['components'] ?? null) ? $data['components'] : [],
+            'styles' => is_array($data['styles'] ?? null) ? $data['styles'] : [],
         ]);
 
         return response()->json(['success' => true]);
