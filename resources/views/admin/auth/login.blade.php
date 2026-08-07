@@ -25,9 +25,18 @@
                         <input id="email" name="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" required autofocus>
                         @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="password" class="form-label fw-semibold">Password</label>
-                        <input id="password" name="password" type="password" class="form-control form-control-lg" autocomplete="current-password" required>
+                        <input id="password" name="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" autocomplete="current-password" required>
+                        @error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="mb-4 p-3 rounded-3 bg-light border">
+                        <label for="captcha_answer" class="form-label fw-semibold d-flex justify-content-between align-items-center mb-2">
+                            <span>Security verification</span>
+                            <span class="badge bg-primary text-white fs-6 px-3 py-1 rounded-pill">{{ $captchaQuestion ?? 'What is 5 + 3?' }}</span>
+                        </label>
+                        <input id="captcha_answer" name="captcha_answer" type="number" class="form-control form-control-lg @error('captcha_answer') is-invalid @enderror" placeholder="Enter answer" required>
+                        @error('captcha_answer')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-check mb-4">
                         <input id="remember" name="remember" type="checkbox" class="form-check-input" value="1">

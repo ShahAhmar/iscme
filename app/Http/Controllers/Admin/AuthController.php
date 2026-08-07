@@ -13,17 +13,46 @@ class AuthController extends Controller
 {
     public function create(): View
     {
-        return view('admin.auth.login');
+        $num1 = rand(2, 9);
+        $num2 = rand(1, 9);
+        $answer = $num1 + $num2;
+        session(['admin_login_captcha' => $answer]);
+
+        return view('admin.auth.login', [
+            'captchaQuestion' => "What is $num1 + $num2?",
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $credentials = $request->validate([
+        $expectedCaptcha = session('admin_login_captcha');
+
+        $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'string'],
+            'captcha_answer' => ['required', 'numeric'],
+        ], [
+            'captcha_answer.required' => 'Please solve the security captcha.',
+            'captcha_answer.numeric' => 'Security captcha must be a number.',
         ]);
 
+        if ($expectedCaptcha === null || (int) $request->input('captcha_answer') !== (int) $expectedCaptcha) {
+            $num1 = rand(2, 9);
+            $num2 = rand(1, 9);
+            session(['admin_login_captcha' => $num1 + $num2]);
+
+            throw ValidationException::withMessages([
+                'captcha_answer' => 'Security Captcha answer is incorrect. Please try again.',
+            ]);
+        }
+
+        $credentials = $request->only('email', 'password');
+
         if (! Auth::attempt($credentials, $request->boolean('remember'))) {
+            $num1 = rand(2, 9);
+            $num2 = rand(1, 9);
+            session(['admin_login_captcha' => $num1 + $num2]);
+
             throw ValidationException::withMessages([
                 'email' => 'The provided credentials do not match our records.',
             ]);
@@ -40,6 +69,8 @@ class AuthController extends Controller
                 'email' => 'Your account is not authorised to access the administration panel.',
             ]);
         }
+
+        session()->forget('admin_login_captcha');
 
         return redirect()->intended(route('admin.dashboard'));
     }
