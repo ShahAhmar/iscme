@@ -78,6 +78,14 @@ class PageController extends Controller
 
     public function builder(Page $page)
     {
+        // If page has no custom CSS, fallback to home page CSS for shared styles
+        if (empty(trim($page->css ?? ''))) {
+            $homePage = Page::where('slug', 'home')->first();
+            if ($homePage && !empty($homePage->css)) {
+                $page->css = $homePage->css;
+            }
+        }
+
         $canvasStyles = [
             'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
             'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',

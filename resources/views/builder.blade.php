@@ -38,6 +38,7 @@
     <div class="panel__top">
         <div class="panel__basic-actions">
             <a href="{{ route('admin.pages.index') }}" class="admin-bar-btn" style="text-decoration: none; display: inline-block; background-color: #6c757d;">&larr; Back to Admin</a>
+            <button id="btn-show-blocks" class="admin-bar-btn" style="background-color: #198754;">🧩 Drag & Drop Blocks</button>
         </div>
         <div>
             <span style="color: white; margin-right: 15px;">Editing: <strong>{{ $page->title }}</strong></span>
@@ -60,6 +61,21 @@
             canvas: {
                 styles: @json($canvasStyles),
             },
+        });
+
+        // Open Block Manager by default
+        editor.on('load', () => {
+            const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
+            if (openBlocksBtn) {
+                openBlocksBtn.set('active', true);
+            }
+        });
+
+        document.getElementById('btn-show-blocks')?.addEventListener('click', function() {
+            const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
+            if (openBlocksBtn) {
+                openBlocksBtn.set('active', true);
+            }
         });
 
         // Load existing page data safely
