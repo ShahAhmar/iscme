@@ -94,6 +94,81 @@
             editor.setStyle(existingCss);
         }
 
+        // Add Custom ISCME Page Section Blocks
+        const bm = editor.BlockManager;
+
+        bm.add('hero-header', {
+            label: 'Hero Header',
+            category: 'ISCME Blocks',
+            content: `
+                <section class="py-5 text-white" style="background: linear-gradient(135deg, #071e3d, #003d6c);">
+                    <div class="container py-5 text-center">
+                        <h1 class="display-4 fw-bold mb-3">Header Title</h1>
+                        <p class="lead mb-4" style="max-width:700px; margin:0 auto;">Add your subtitle or brief description here for this page section.</p>
+                        <a href="#" class="btn btn-primary btn-lg px-4 fw-semibold">Action Button</a>
+                    </div>
+                </section>
+            `
+        });
+
+        bm.add('two-column-card', {
+            label: '2-Column Section',
+            category: 'ISCME Blocks',
+            content: `
+                <section class="py-5 bg-white">
+                    <div class="container py-4">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-md-6">
+                                <h3 class="fw-bold mb-3" style="color:#003d6c;">Section Heading</h3>
+                                <p class="text-muted mb-4" style="line-height:1.8;">Detailed description text goes here. You can edit this text directly inside the editor.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card border-0 shadow-sm p-4 rounded-4" style="background:#f8f9fa;">
+                                    <h5 class="fw-bold text-primary mb-2">Highlight Box</h5>
+                                    <p class="text-muted mb-0">Highlight important information, criteria, or notice here.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `
+        });
+
+        bm.add('three-feature-cards', {
+            label: '3 Feature Cards',
+            category: 'ISCME Blocks',
+            content: `
+                <section class="py-5 bg-light">
+                    <div class="container py-4 text-center">
+                        <h2 class="fw-bold mb-5" style="color:#003d6c;">Key Highlights</h2>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="card border-0 shadow-sm p-4 rounded-4 h-100 bg-white">
+                                    <div class="text-primary mb-3" style="font-size:2rem;"><i class="bi bi-star-fill"></i></div>
+                                    <h5 class="fw-bold mb-2">Feature 1</h5>
+                                    <p class="text-muted small mb-0">Brief description of the first feature or track.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card border-0 shadow-sm p-4 rounded-4 h-100 bg-white">
+                                    <div class="text-primary mb-3" style="font-size:2rem;"><i class="bi bi-award-fill"></i></div>
+                                    <h5 class="fw-bold mb-2">Feature 2</h5>
+                                    <p class="text-muted small mb-0">Brief description of the second feature or track.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card border-0 shadow-sm p-4 rounded-4 h-100 bg-white">
+                                    <div class="text-primary mb-3" style="font-size:2rem;"><i class="bi bi-shield-check"></i></div>
+                                    <h5 class="fw-bold mb-2">Feature 3</h5>
+                                    <p class="text-muted small mb-0">Brief description of the third feature or track.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `
+        });
+
         // Handle Save
         document.getElementById('save-page').addEventListener('click', function() {
             const btn = this;

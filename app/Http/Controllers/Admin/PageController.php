@@ -42,7 +42,7 @@ class PageController extends Controller
             'title' => $request->title,
             'slug' => $slug,
             'is_published' => $request->has('is_published'),
-            'html' => '<div class="container py-5 mt-5"><h1>' . e($request->title) . '</h1><p>Start building your page here...</p></div>',
+            'html' => '<section class="py-5 text-white" style="background: linear-gradient(135deg, #071e3d, #003d6c);"><div class="container py-5 text-center"><h1 class="display-4 fw-bold mb-3">' . e($request->title) . '</h1><p class="lead" style="max-width:700px; margin:0 auto;">Welcome to ' . e($request->title) . '. Customize this page using the visual drag-and-drop builder.</p></div></section><section class="py-5 bg-white"><div class="container py-4"><div class="row g-4"><div class="col-md-6"><h3 class="fw-bold mb-3" style="color:#003d6c;">Overview</h3><p class="text-muted" style="line-height:1.8;">Add your detailed page content, guidelines, or announcements here.</p></div><div class="col-md-6"><div class="card border-0 shadow-sm p-4 rounded-4" style="background:#f8f9fa;"><h5 class="fw-bold mb-2 text-primary">Key Highlights</h5><p class="text-muted mb-0">Highlight important dates, contact details, or conference topics.</p></div></div></div></div></section>',
             'css' => '',
             'components' => [],
             'styles' => [],
@@ -78,13 +78,21 @@ class PageController extends Controller
 
     public function builder(Page $page)
     {
+        $canvasStyles = [
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
+            'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
+            'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap',
+        ];
+
+        try {
+            $canvasStyles[] = Vite::asset('resources/scss/app.scss');
+        } catch (\Throwable $e) {
+            // Ignore if Vite manifest is not available
+        }
+
         return view('builder', [
             'page' => $page,
-            'canvasStyles' => [
-                Vite::asset('resources/scss/app.scss'),
-                'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
-                'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap',
-            ],
+            'canvasStyles' => array_values(array_unique($canvasStyles)),
         ]);
     }
 
