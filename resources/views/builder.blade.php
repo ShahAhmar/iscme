@@ -7,20 +7,16 @@
     <!-- GrapesJS CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.21.2/css/grapes.min.css">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: sans-serif; }
         #gjs { border: 3px solid #444; }
-        /* Panel style */
         .panel__top {
             padding: 0;
             width: 100%;
             display: flex;
             position: initial;
-            justify-content: center;
             justify-content: space-between;
             background: #2a2a2a;
-        }
-        .panel__basic-actions {
-            position: initial;
+            align-items: center;
         }
         .admin-bar-btn {
             background-color: #0d6efd;
@@ -44,7 +40,7 @@
             <a href="{{ route('admin.pages.index') }}" class="admin-bar-btn" style="text-decoration: none; display: inline-block; background-color: #6c757d;">&larr; Back to Admin</a>
         </div>
         <div>
-            <span style="color: white; margin-right: 15px;">Editing: {{ $page->title }}</span>
+            <span style="color: white; margin-right: 15px;">Editing: <strong>{{ $page->title }}</strong></span>
             <button id="save-page" class="admin-bar-btn">Save Changes</button>
         </div>
     </div>
@@ -53,7 +49,6 @@
 
     <!-- GrapesJS JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.21.2/grapes.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/grapesjs-blocks-basic/1.0.1/grapesjs-blocks-basic.min.js"></script>
     
     <script>
         const editor = grapesjs.init({
@@ -65,55 +60,44 @@
             canvas: {
                 styles: @json($canvasStyles),
             },
-            plugins: ['gjs-blocks-basic'],
-            pluginsOpts: {
-                'gjs-blocks-basic': { flexGrid: true }
-            }
         });
 
-        // Load existing page data. Older records stored components as the string "[]";
-        // normalise that legacy format before deciding whether to use components or HTML.
-        const normaliseStoredJson = (value) => {
-            if (typeof value !== 'string') return value;
-            try { return JSON.parse(value); } catch { return null; }
-        };
-        const existingComponents = normaliseStoredJson(@json($page->components ?: null));
+        // Load existing page data safely
         const existingHtml = @json($page->html ?? '');
         const existingCss = @json($page->css ?? '');
-        const hasExistingComponents = Array.isArray(existingComponents)
-            ? existingComponents.length > 0
-            : Boolean(existingComponents && typeof existingComponents === 'object');
 
-        if (hasExistingComponents) {
-            editor.setComponents(existingComponents);
-        } else if (existingHtml) {
+        if (existingHtml && existingHtml.trim().length > 0) {
             editor.setComponents(existingHtml);
         }
 
-        if (existingCss) {
+        if (existingCss && existingCss.trim().length > 0) {
             editor.setStyle(existingCss);
         }
 
-        // Add Custom ISCME Page Section Blocks
+        // Add Custom ISCME Page Section & Basic Blocks
         const bm = editor.BlockManager;
 
-        bm.add('hero-header', {
-            label: 'Hero Header',
-            category: 'ISCME Blocks',
-            content: `
-                <section class="py-5 text-white" style="background: linear-gradient(135deg, #071e3d, #003d6c);">
-                    <div class="container py-5 text-center">
-                        <h1 class="display-4 fw-bold mb-3">Header Title</h1>
-                        <p class="lead mb-4" style="max-width:700px; margin:0 auto;">Add your subtitle or brief description here for this page section.</p>
-                        <a href="#" class="btn btn-primary btn-lg px-4 fw-semibold">Action Button</a>
-                    </div>
-                </section>
-            `
+        bm.add('heading-block', {
+            label: 'Heading',
+            category: 'Basic Elements',
+            content: '<h2 class="fw-bold text-primary mb-3">Section Title</h2>'
+        });
+
+        bm.add('text-block', {
+            label: 'Text Paragraph',
+            category: 'Basic Elements',
+            content: '<p class="text-muted" style="font-size:1.05rem; line-height:1.7;">Enter your content paragraph text here. Click directly to edit text.</p>'
+        });
+
+        bm.add('button-block', {
+            label: 'Button',
+            category: 'Basic Elements',
+            content: '<a href="#" class="btn btn-primary px-4 py-2 fw-semibold">Click Here</a>'
         });
 
         bm.add('two-column-card', {
-            label: '2-Column Section',
-            category: 'ISCME Blocks',
+            label: '2-Column Layout',
+            category: 'Layout Blocks',
             content: `
                 <section class="py-5 bg-white">
                     <div class="container py-4">
@@ -134,9 +118,23 @@
             `
         });
 
+        bm.add('hero-header', {
+            label: 'Hero Header',
+            category: 'ISCME Sections',
+            content: `
+                <section class="py-5 text-white" style="background: linear-gradient(135deg, #071e3d, #003d6c);">
+                    <div class="container py-5 text-center">
+                        <h1 class="display-4 fw-bold mb-3">Header Title</h1>
+                        <p class="lead mb-4" style="max-width:700px; margin:0 auto;">Add your subtitle or brief description here for this page section.</p>
+                        <a href="#" class="btn btn-primary btn-lg px-4 fw-semibold">Action Button</a>
+                    </div>
+                </section>
+            `
+        });
+
         bm.add('three-feature-cards', {
             label: '3 Feature Cards',
-            category: 'ISCME Blocks',
+            category: 'ISCME Sections',
             content: `
                 <section class="py-5 bg-light">
                     <div class="container py-4 text-center">
@@ -144,21 +142,18 @@
                         <div class="row g-4">
                             <div class="col-md-4">
                                 <div class="card border-0 shadow-sm p-4 rounded-4 h-100 bg-white">
-                                    <div class="text-primary mb-3" style="font-size:2rem;"><i class="bi bi-star-fill"></i></div>
                                     <h5 class="fw-bold mb-2">Feature 1</h5>
                                     <p class="text-muted small mb-0">Brief description of the first feature or track.</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="card border-0 shadow-sm p-4 rounded-4 h-100 bg-white">
-                                    <div class="text-primary mb-3" style="font-size:2rem;"><i class="bi bi-award-fill"></i></div>
                                     <h5 class="fw-bold mb-2">Feature 2</h5>
                                     <p class="text-muted small mb-0">Brief description of the second feature or track.</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="card border-0 shadow-sm p-4 rounded-4 h-100 bg-white">
-                                    <div class="text-primary mb-3" style="font-size:2rem;"><i class="bi bi-shield-check"></i></div>
                                     <h5 class="fw-bold mb-2">Feature 3</h5>
                                     <p class="text-muted small mb-0">Brief description of the third feature or track.</p>
                                 </div>
