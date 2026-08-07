@@ -55,8 +55,9 @@ if (!$gitWorked) {
     }
 }
 
-// 6. Run Database Migrations
+// 6. Run Database Migrations & Seeds
 $migrate = shell_exec("cd $path && $php artisan migrate --force 2>&1");
+$seed = shell_exec("cd $path && $php artisan db:seed --force 2>&1");
 
 // 7. Clear view, route & config cache directly
 if (file_exists($path . '/bootstrap/cache/routes-v7.php')) @unlink($path . '/bootstrap/cache/routes-v7.php');
@@ -74,7 +75,7 @@ $artisan = shell_exec("cd $path && $php artisan optimize:clear 2>&1");
 
 // 9. Log deployment
 $commit = shell_exec("cd $path && $git log --oneline -1 2>&1");
-$log = date('Y-m-d H:i:s') . " | PULL DEPLOYED: $commit\nFETCH: $fetch\nRESET: $reset\nMIGRATE: $migrate\nFALLBACK: $fallback\n---\n";
+$log = date('Y-m-d H:i:s') . " | PULL DEPLOYED: $commit\nFETCH: $fetch\nRESET: $reset\nMIGRATE: $migrate\nSEED: $seed\nFALLBACK: $fallback\n---\n";
 @file_put_contents($path . '/storage/logs/deploy.log', $log, FILE_APPEND | LOCK_EX);
 
 echo json_encode([
@@ -83,6 +84,7 @@ echo json_encode([
     'fetch'      => trim($fetch),
     'reset'      => trim($reset),
     'migrate'    => trim($migrate),
+    'seed'       => trim($seed),
     'gitWorked'  => $gitWorked,
     'fallback'   => trim($fallback),
     'artisan'    => trim($artisan),
