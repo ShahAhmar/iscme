@@ -36,7 +36,8 @@ if (!$gitWorked) {
     $files = [
         'routes/web.php',
         'app/Http/Controllers/RegistrationController.php',
-        'app/Http/Controllers/AdminController.php',
+        'app/Http/Controllers/Admin/AuthController.php',
+        'resources/views/admin/auth/login.blade.php',
         'resources/views/admin/dashboard.blade.php',
         'public/webhook.php',
         'public/pull.php',
@@ -57,9 +58,16 @@ if (!$gitWorked) {
 // 6. Run Database Migrations
 $migrate = shell_exec("cd $path && $php artisan migrate --force 2>&1");
 
-// 7. Clear route & config cache directly
+// 7. Clear view, route & config cache directly
 if (file_exists($path . '/bootstrap/cache/routes-v7.php')) @unlink($path . '/bootstrap/cache/routes-v7.php');
 if (file_exists($path . '/bootstrap/cache/config.php')) @unlink($path . '/bootstrap/cache/config.php');
+
+$viewFiles = glob($path . '/storage/framework/views/*');
+if (is_array($viewFiles)) {
+    foreach ($viewFiles as $f) {
+        if (is_file($f) && basename($f) !== '.gitignore') @unlink($f);
+    }
+}
 
 // 8. Run artisan optimize:clear
 $artisan = shell_exec("cd $path && $php artisan optimize:clear 2>&1");
